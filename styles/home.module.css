@@ -1,0 +1,40 @@
+/*___________________Start Navbar Style */
+.showMenu{
+    animation:showMenuCollaps ease-in-out 1s ;
+}
+/*___________________End Navbar Style */
+
+/*___________________Start Header Style */
+.header_content{
+    background-position: 50% 3px;
+}
+/*___________________End Header Style */
+
+/*___________________Start weekly-State Style */
+@media  screen and (min-width:380px) and (max-width:700px){
+    .weeklyState{
+        grid-template-rows:repeat(9, minmax(0, 215px)) !important;
+        padding: 0 15% !important;
+    }
+}
+/*___________________End weekly-State  Style */
+
+
+
+
+
+
+
+
+
+
+
+@keyframes showMenuCollaps {
+    0%{
+        height: 0;
+    }
+    100%{
+        height:155px;
+    }
+
+}

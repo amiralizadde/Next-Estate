@@ -26,3 +26,7 @@
 body{
     font-family:"Dana";
 }
+.range-slider__thumb{
+    height: 15px !important;
+    width: 15px !important;
+}

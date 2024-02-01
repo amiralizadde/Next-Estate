@@ -33,7 +33,6 @@ const Header = () => {
               />
               <span className="text-white mt-[10px]">آپارتمان</span>
             </li>
-            {/* <div className="w-full h-px sm:w-px sm:h-16 my-5 bg-white/75 "></div> */}
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home1.png"
@@ -43,7 +42,7 @@ const Header = () => {
               />
               <span className="text-white mt-[10px]">خانه حیاط دار</span>
             </li>
-            {/* <div className="w-full h-px sm:w-px sm:h-16 my-5 bg-white/75 "></div> */}
+            
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home2.png"
@@ -53,7 +52,7 @@ const Header = () => {
               />
               <span className="text-white mt-[10px]">زمین و ملک </span>
             </li>
-            {/* <div className="w-full h-px sm:w-px sm:h-16 my-5 bg-white/75 "></div> */}
+            
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home3.png"
@@ -63,7 +62,7 @@ const Header = () => {
               />
               <span className="text-white mt-[10px]">مغازه</span>
             </li>
-            {/* <div className="w-full h-px sm:w-px sm:h-16 my-5 bg-white/75 "></div> */}
+            
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home4.png"
@@ -73,7 +72,7 @@ const Header = () => {
               />
               <span className="text-white mt-[10px]">واحد اداری</span>
             </li>
-            {/* <div className="w-full h-px sm:w-px sm:h-16 my-5 bg-white/75 "></div> */}
+            
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home6.png"

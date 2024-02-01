@@ -11,11 +11,11 @@ const Footer = () => {
                 <p className='text-white flex text-sm' ><span>بیشتر بخوانید</span><ChevronLeftIcon className='w-3 mx-3' /></p>
             </div>
             <div className='my-14  md:my-0'>
-            <p className='text-white font-bold text-xl'>تماس با ما</p>
-            <p className='text-white/50 text-sm mt-5 flex '><MapPinIcon className='w-4 ml-2 text-white' /> <span>تهران خیابان ولیعصر</span></p>
-            <p className='text-white/50 text-sm my-2 flex'><PhoneIcon className='w-4 ml-2 text-white'/> شماره همراه : 09121234567</p>
-            <p className='text-white/50 text-sm flex'><EnvelopeIcon className='w-4 ml-2 text-white'/> AmirAlizade@gmail.com </p>
-            <p className='text-white flex text-sm my-4'>تماس با ما <ChevronLeftIcon className='w-3 mx-3' /></p>
+                <p className='text-white font-bold text-xl'>تماس با ما</p>
+                <p className='text-white/50 text-sm mt-5 flex '><MapPinIcon className='w-4 ml-2 text-white' /> <span>تهران خیابان ولیعصر</span></p>
+                <p className='text-white/50 text-sm my-2 flex'><PhoneIcon className='w-4 ml-2 text-white'/> شماره همراه : 09121234567</p>
+                <p className='text-white/50 text-sm flex'><EnvelopeIcon className='w-4 ml-2 text-white'/> AmirAlizade@gmail.com </p>
+                <p className='text-white flex text-sm my-4'>تماس با ما <ChevronLeftIcon className='w-3 mx-3' /></p>
             </div>
             <div className=''>
                 <form action="#" className='relative flex  md:flex-col md:mt-8 '>

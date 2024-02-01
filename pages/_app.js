@@ -1,11 +1,11 @@
-import Header from "@/components/templates/Header";
 import Footer from "@/components/modules/Footer";
 import "@/styles/globals.css";
+import Navbar from "@/components/modules/Navbar";
 
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <Header />
+      <Navbar />
       <Component {...pageProps} />
       <Footer />
     </>

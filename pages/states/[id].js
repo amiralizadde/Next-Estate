@@ -39,9 +39,9 @@ const DetailsHome = () => {
       </header>
 
       <section>
-        <div className="px-16 lg:pe-24 lg:ps-64  border">
+        <div className="px-5 xs:px-16 lg:pe-24 lg:ps-64  ">
           {/* general Information */}
-          <div className="my-5 lg:flex lg:items-center lg:justify-evenly border">
+          <div className="my-5 lg:flex lg:items-center lg:justify-evenly ">
             <p className="text-2xl text-blue-300 font-bold my-5">
               800.000 تومان
             </p>
@@ -83,12 +83,12 @@ const DetailsHome = () => {
           </div>
           <hr />
 
-          <div className=" py-5 border flex items-center justify-end w-full">
-            <div className="w-2/3 border">
+          <div className=" py-5  flex items-center justify-between w-full">
+            <div className="w-2/3 ">
               <p className="text-xl md:text-4xl">خیابان خیام میدان ولیعصر</p>
               <p className="text-xs mt-4"> ۱۲ بهمن ۱۴۰۲ </p>
             </div>
-            <div className="md:me-5 border">
+            <div className="md:me-5 ">
               <p className="text-sm bg-blue-400 w-16 text-center rounded text-white">
                 برای رهن
               </p>
@@ -103,15 +103,17 @@ const DetailsHome = () => {
 
           {/* compelete-features */}
 
-          <div className="grid grid-cols-2  md:grid-cols-3  child:border gap-y-3 gap-x-1">
-            <div className="col-start-1 col-span-3 child:font-bold child:text-sm">
+          <div className="grid grid-cols-2  md:grid-cols-3   gap-y-3 gap-x-1">
+            <div className="col-start-1 col-span-3 child:font-bold child:text-sm mt-4">
               <p> سال ساخت : </p>
               <p> 1389/11/14 </p>
             </div>
 
-            <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-1 text-xl ">مشخصات</div>
+            <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-1 text-xl ">
+              مشخصات
+            </div>
             <div className="col-start-1 col-span-2 md:col-start-2 md:col-span-2">
-              <ul className="grid grid-cols-1 lg:grid-cols-2">
+              <ul className="grid grid-cols-1 md:grid-cols-2">
                 <li className="flex items-center my-2">
                   <MdOutlineBedroomChild className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
@@ -180,7 +182,7 @@ const DetailsHome = () => {
 
               <hr className="my-5" />
 
-              <ul className="grid grid-cols-1 lg:grid-cols-2">
+              <ul className="grid grid-cols-1 md:grid-cols-2">
                 <li className="flex items-center my-2">
                   <MdHeight className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
@@ -247,8 +249,12 @@ const DetailsHome = () => {
                 </li>
               </ul>
             </div>
-            {/* <hr className="my-5 w-full" /> */}
-            <div className=" col-start-1 col-span-2 md:col-start-1 md:col-span-1"> شرایط لیزینگ </div>
+
+            <hr className="my-5 col-start-1 col-span-3 w-full" />
+
+            <div className=" col-start-1 col-span-2 md:col-start-1 md:col-span-1">
+              شرایط لیزینگ
+            </div>
             <div className=" col-start-1 col-span-2 md:col-start-2 md:col-span-2">
               <ul className="grid grid-cols-1 lg:grid-cols-2">
                 <li className="flex items-center my-2">
@@ -275,15 +281,18 @@ const DetailsHome = () => {
                 <li className="flex items-center my-2">
                   <GiExitDoor className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    سکونت :{" "}
+                    سکونت :
                   </span>
                   <span> در دوماه </span>
                 </li>
               </ul>
             </div>
 
-            <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-1"> هزینه ها </div>
+            <hr className="my-5 col-start-1 col-span-3 w-full" />
+
+            <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-1">
+              هزینه ها
+            </div>
             <div className="col-start-1 col-span-2 md:col-start-2 md:col-span-2">
               <ul className="grid grid-cols-1 lg:grid-cols-2">
                 <li className="flex items-center my-2">
@@ -310,9 +319,13 @@ const DetailsHome = () => {
               </ul>
             </div>
 
-            <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-1"> امکانات </div>
+            <hr className="my-5 col-start-1 col-span-3 w-full" />
+
+            <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-1">
+              امکانات
+            </div>
             <div className="col-start-1 col-span-2 md:col-start-2 md:col-span-2">
-              <ul className="grid grid-cols-1 lg:grid-cols-3">
+              <ul className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3">
                 <li className="flex items-center my-2">
                   <CheckIcon className="text-base text-black/50 w-5 border border-black rounded-full me-1" />
                   <span className="me-4 ms-1 text-base text-black/50">
@@ -377,28 +390,35 @@ const DetailsHome = () => {
               </ul>
             </div>
 
-            <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-1"> موقعیت </div>
-            <div className="col-start-1 col-span-2 md:col-start-2 md:col-span-2">
-              <div className="grid grid-cols-2">
+            <hr className="my-5 col-start-1 col-span-3 w-full" />
+
+            <div className="col-start-1 col-span-2 md:col-start-1 md:col-span-1">
+              موقعیت
+            </div>
+            <div className="col-start-1 col-span-2 md:col-start-2 md:col-span-2 mb-4">
+              <div className="grid grid-cols-1 md:grid-cols-2">
                 <div>
                   <p className="flex">
-                    <MapPinIcon className="w-5 text-black/50 me-2" /> <span className="text-black/50"> آدرس دقیق: </span>
+                    <MapPinIcon className="w-5 text-black/50 me-2 " />
+                    <span className="text-black/50"> آدرس کوتاه: </span>
                   </p>
-                  <p className="px-8 my-2">
-                    
-                    تهران منطقه نواب کوچه گلستان فرفی پورپرانداخ پلاک 4
-                  </p>
-                  <p className="flex">
-                    <BsSignpost2 className="mx-1 text-black/50" />
-                    <span className="text-black/50">کدپستی:</span>
-                    <span className="ms-4">158158-15535</span>
-                  </p>
+                  <p className="px-8 my-2"> تهران منطقه نواب </p>
                 </div>
                 <div>
                   <p className="flex">
-                    <MapPinIcon className="w-5 text-black/50 me-2 " /> <span className="text-black/50"> آدرس کوتاه: </span>
+                    <MapPinIcon className="w-5 text-black/50 me-2" />
+                    <span className="text-black/50"> آدرس دقیق: </span>
                   </p>
-                  <p className="px-8 my-2"> تهران منطقه نواب </p>
+                  <p className="px-8 my-2">
+                    تهران منطقه نواب کوچه گلستان فرفی پورپرانداخ پلاک 4
+                  </p>
+                </div>
+                <div>
+                  <p className="flex my-3">
+                    <BsSignpost2 className="mx-1 text-black/50" />
+                    <span className="text-black/50 ">کدپستی:</span>
+                    <span className="ms-4">158158-15535</span>
+                  </p>
                 </div>
               </div>
             </div>

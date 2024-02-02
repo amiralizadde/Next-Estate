@@ -56,9 +56,9 @@ const Navbar = () => {
               <span className="text-xs font-Dana font-bold ">افزودن ملک</span>
             </p>
           </button>
-          <button className="py-2 px-[11px] border  border-black rounded-sm lg:border-white ">
+          <Link href='/auth/signin' className="py-2 px-[11px] border  border-black rounded-sm lg:border-white ">
             <UserIcon className="w-5 lg:text-white" />
-          </button>
+          </Link>
         </div>
       </div>
       {/* ---collaps Menu ---- */}

@@ -1,14 +1,14 @@
 import NavbarAuth from "@/components/modules/NavbarAuth";
 import Link from "next/link";
 import React from "react";
-import { PiTelegramLogoBold } from "react-icons/pi";
+import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import HeaderAuth from "@/components/modules/HeaderAuth";
 
 const signin = () => {
   return (
     <div className="flex flex-col items-center justify-center">
-      <HeaderAuth />
+      {/* <HeaderAuth /> */}
       <div className="my-24 min-h-96 w-[500px] border ">
         <NavbarAuth />
 
@@ -47,20 +47,18 @@ const signin = () => {
               <span className=""> ورود توسط شبکه های اجتماعی </span>
               <span className="py-4  flex items-center justify-center child:mx-4   child:text-xl">
                 <span className="border rounded-full p-1 ">
-                  {" "}
-                  <PiTelegramLogoBold className="w-[18px] h-[18px] " />{" "}
+                  <FaGoogle className="w-[18px] h-[18px] " />
                 </span>
                 <span className="border rounded-full p-1 ">
-                  {" "}
-                  <FaFacebookF className="w-[18px] h-[18px] " />{" "}
+                  <FaFacebookF className="w-[18px] h-[18px] " />
                 </span>
               </span>
             </p>
             <p className="text-sm text-black/50 w-1/2">
-              با ایجاد حساب/ورود{" "}
+              با ایجاد حساب/ورود
               <span className="text-blue-500 cursor-pointer">
                 شرایط و ضوابط
-              </span>{" "}
+              </span>
               ما را قبول میکنید
             </p>
           </div>

@@ -6,7 +6,7 @@ import React from 'react'
 const passwordRecovery = () => {
   return (
     <div className="flex flex-col items-center justify-center">
-    <HeaderAuth />
+    {/* <HeaderAuth /> */}
     <div className="my-24 min-h-80 w-[500px] border ">
       <NavbarAuth />
 

@@ -26,6 +26,10 @@
 body{
     font-family:"Dana";
 }
+/* input:focus{
+    border-color: black;
+    outline: none !important;
+} */
 .range-slider__thumb{
     height: 15px !important;
     width: 15px !important;

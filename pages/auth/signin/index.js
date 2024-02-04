@@ -1,15 +1,13 @@
 import NavbarAuth from "@/components/modules/NavbarAuth";
 import Link from "next/link";
-import React from "react";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
-import HeaderAuth from "@/components/modules/HeaderAuth";
 import { useFormik } from "formik";
 import { loginUser } from "@/services/axios/requests/UserAuth";
 import swal from "sweetalert";
 import { useRouter } from "next/router";
 
-const signin = () => {
+const index = () => {
   let router = useRouter()
   let form = useFormik({
     initialValues: { identifire: "", password: "" },
@@ -33,7 +31,6 @@ const signin = () => {
       return errors
 
     },
-
     onSubmit: (values) => {
       signinUser(values)
     },
@@ -65,8 +62,7 @@ const signin = () => {
       {/* <HeaderAuth /> */}
       <div className="my-24 min-h-96 w-[500px] border ">
         <NavbarAuth />
-
-        <form action="#" className="p-10" onSubmit={form.handleSubmit}>
+        <form  className="p-10" onSubmit={form.handleSubmit}>
           <input
             type="text"
             name="identifire"
@@ -133,4 +129,13 @@ const signin = () => {
   );
 };
 
-export default signin;
+export async function getStaticProps (context) {
+  
+  console.log('context -> ' , context);
+
+  return{
+    props:{}
+  }
+}
+
+export default index;

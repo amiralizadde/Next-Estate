@@ -46,13 +46,18 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex ">
-          <button className="hidden   relative lg:flex items-center justify-center mx-2 rounded border text-center border-yellow-100 py-2 child:text-white pe-6 ps-8">
-            <p className="hover:text-yellow-100">
-              <span className=" text-2xl right-3 absolute">+</span>
-              <span className="text-xs font-Dana font-bold ">افزودن ملک</span>
-            </p>
-          </button>
-          <Link href='/auth/signin' className="py-2 px-[11px] border  border-black rounded-sm lg:border-white ">
+          <Link href="/addNewState">
+            <button className="hidden   relative lg:flex items-center justify-center mx-2 rounded border text-center border-yellow-100 py-2 child:text-white pe-6 ps-8">
+              <p className="hover:text-yellow-100">
+                <span className=" text-2xl right-3 absolute">+</span>
+                <span className="text-xs font-Dana font-bold ">افزودن ملک</span>
+              </p>
+            </button>
+          </Link>
+          <Link
+            href="/auth/signin"
+            className="py-2 px-[11px] border  border-black rounded-sm lg:border-white "
+          >
             <UserIcon className="w-5 lg:text-white" />
           </Link>
         </div>

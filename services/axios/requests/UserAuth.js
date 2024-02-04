@@ -12,4 +12,13 @@ const createUser = (data) => {
 
 };
 
-export { createUser };
+const loginUser = (data) => {
+  const { identifire , password } = data;
+  return apiRequest.post("/auth/signin", {
+    identifire,
+    password,
+  });
+
+};
+
+export { createUser ,loginUser};

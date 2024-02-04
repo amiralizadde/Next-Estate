@@ -11,8 +11,7 @@ apiRequest.interceptors.response.use(
 
     switch (response.status) {
       case 200: {
-        response = "User Created Successfully ...";
-
+        response = " Successfully ...";
         return response;
       }
       default:

@@ -8,10 +8,6 @@ import { useRouter } from "next/router";
 const Navbar = () => {
   const [isShowMenu, setIsShowMenu] = useState(false);
   let router = useRouter();
-  useEffect(() => {
-    console.log("router.pathname", router.pathname);
-    console.log("router.route", router.route);
-  }, [router]);
 
   return (
     <navbar className=" bg-white lg:bg-black fixed right-0 top-0 left-0 z-40 ">

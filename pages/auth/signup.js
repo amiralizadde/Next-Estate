@@ -66,9 +66,6 @@ const signup = () => {
     },
   });
 
-  useEffect(() => {
-    console.log("form -> ", form, form.errors.email, form.touched.email);
-  }, [form.touched.email]);
 
   const createUserHandler = async (data) => {
     await createUser(data)

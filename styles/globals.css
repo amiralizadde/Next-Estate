@@ -30,6 +30,9 @@ body{
     border-color: black;
     outline: none !important;
 } */
+.depositInput{
+    padding: 0 !important;
+}
 .range-slider__thumb{
     height: 15px !important;
     width: 15px !important;

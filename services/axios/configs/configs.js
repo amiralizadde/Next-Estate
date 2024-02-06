@@ -2,7 +2,7 @@ import axios from "axios";
 
 const apiRequest = axios.create({
   baseURL: "/api",
-  headers: { "Content-Type": "application/json" },
+  // headers: { "Content-Type": "application/json" },
 });
 
 apiRequest.interceptors.response.use(

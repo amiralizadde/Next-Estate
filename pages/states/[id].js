@@ -23,15 +23,19 @@ import { MdElectricBolt } from "react-icons/md";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { MapPinIcon } from "@heroicons/react/24/solid";
 import { BsSignpost2 } from "react-icons/bs";
+import connectionToDB from "@/utils/db";
+import StateModels from "@/models/states";
 
-const DetailsHome = () => {
+const DetailsHome = ({dataStates}) => {
+  const {values}= dataStates
+  console.log('values -> ',values);
   return (
     <div className="mt-16 ">
       {/* images home */}
       <header className="">
         <div className="">
           <img
-            src="/homeImage/house5.jpg"
+            src={`/${dataStates.image}`}
             alt=""
             className="w-full h-[80vh] object-cover"
           />
@@ -43,7 +47,7 @@ const DetailsHome = () => {
           {/* general Information */}
           <div className="my-5 lg:flex lg:items-center lg:justify-evenly ">
             <p className="text-2xl text-blue-300 font-bold my-5">
-              800.000 تومان
+              { values.statusAd === 'rent' ? ' ودیعه '+ Number(values.deposit).toLocaleString() : Number(values.price).toLocaleString() } تومان
             </p>
 
             <div className="child:my-4 grid xs:grid-cols-2 lg:grid-cols-4 lg:child:mx-3 ">
@@ -51,7 +55,7 @@ const DetailsHome = () => {
                 <LiaHotjar className="text-4xl " />
                 <p className="flex flex-col ms-2">
                   <span className="text-xs"> گرمایش </span>
-                  <span className="text-xs font-bold"> شوفاز </span>
+                  <span className="text-xs font-bold"> {values.heating } </span>
                 </p>
               </div>
 
@@ -66,14 +70,14 @@ const DetailsHome = () => {
                 <IoBedOutline className="text-4xl " />
                 <p className="flex flex-col ms-2">
                   <span className="text-xs"> تعداد خواب </span>
-                  <span className="text-xs font-bold"> 1 اتاق خواب </span>
+                  <span className="text-xs font-bold"> {values.room }</span>
                 </p>
               </div>
               <div className="flex">
                 <SlSizeFullscreen className="text-3xl " />
                 <p className="flex flex-col ms-2">
                   <span className="text-xs"> اندازه ملک </span>
-                  <span className="text-xs font-bold"> 720متر </span>
+                  <span className="text-xs font-bold"> { values.meterage }متر </span>
                 </p>
               </div>
             </div>
@@ -85,13 +89,13 @@ const DetailsHome = () => {
 
           <div className=" py-5  flex items-center justify-between w-full">
             <div className="w-2/3 ">
-              <p className="text-xl md:text-4xl">خیابان خیام میدان ولیعصر</p>
+              <p className="text-xl md:text-4xl" >  {values.belvar}  </p>
               <p className="text-xs mt-4"> ۱۲ بهمن ۱۴۰۲ </p>
             </div>
             <div className="md:me-5 ">
-              <p className="text-sm bg-blue-400 w-16 text-center rounded text-white">
-                برای رهن
-              </p>
+              <p className="text-sm bg-blue-400 w-16 text-center rounded text-white py-1">
+                  {values.statusAd}
+               </p>
               <p className="flex flex-col xs:flex-row mt-4">
                 <span className="text-sm"> شناسه ملک : </span>
                 <span className="text-sm font-bold "> 1255 </span>
@@ -428,5 +432,38 @@ const DetailsHome = () => {
     </div>
   );
 };
+
+export async function getStaticPaths(context) {
+  
+  connectionToDB()
+  const states =await StateModels.find({})
+
+  const paths =  states.map(state=>{
+    return {
+      params:{id:String(state._id)}
+    }
+  })
+  
+  console.log('paths ->' ,paths);
+
+  return {
+    paths,
+    fallback: true,
+  };
+}
+
+export async function getStaticProps(context) {
+  
+  connectionToDB()
+  const states =await StateModels.findOne({_id:context.params.id})
+
+  console.log('states 1 ->', states);
+
+  return {
+    props: {
+      dataStates:JSON.parse(JSON.stringify(states)),
+    },
+  };
+}
 
 export default DetailsHome;

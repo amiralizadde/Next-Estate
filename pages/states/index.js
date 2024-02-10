@@ -13,8 +13,10 @@ import { featuresItemHome } from "@/db/db";
 import { HomeIcon } from "@heroicons/react/24/outline";
 import StateModels from "@/models/states";
 import UserModels from "@/models/users";
+import connectionToDB from "@/utils/db";
+import StateBox from "@/components/modules/StateBox";
 
-const index = () => {
+const index = ({states}) => {
   const [cites, setCites] = useState("");
   const [status, setStatus] = useState("");
   const [isShowCites, setIsShowCites] = useState(false);
@@ -22,7 +24,7 @@ const index = () => {
   const [priceRange, setPriceRange] = useState([0, 100000]);
   const [filterdHomeItems, setFilterdHomeItems] = useState([]);
 
-  
+  console.log('states ->',states);
 
   return (
     <div className="mt-20 py-12 px-5">
@@ -292,7 +294,20 @@ const index = () => {
 
           {/* show Homes Items */}
           <div className="child:my-3 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 p-5">
-            <div>
+    
+                  
+         { states.length ? (
+          states.map(state=>(
+            <StateBox state={state} />
+          ))
+         ):(
+          <p>Loading</p>
+         )}
+    
+    
+    
+    
+            {/* <div>
               <div className="relative border">
                 <img
                   src="/homeImage/house1.jpg"
@@ -410,7 +425,7 @@ const index = () => {
                   <span className="mx-1"> مبلمان </span>
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
@@ -423,15 +438,16 @@ const index = () => {
   );
 };
 
-export async function getStaticProps (context){
-
-  let states =await UserModels.findOne({ username :"amir12"})
-  console.log('context -> ' ,context);
-
-  return{
-    props:{name:'amir'}
-  }
+export async function getStaticProps() {
+ 
+    connectionToDB()
+      const states = await StateModels.find({});
+     
+  return {
+    props:{
+      states:JSON.parse(JSON.stringify(states))
+    }
+  };
 }
-
 
 export default index;

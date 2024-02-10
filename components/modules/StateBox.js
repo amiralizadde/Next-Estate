@@ -1,8 +1,10 @@
 import React from "react";
 import { HomeIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const StateBox = ({state}) => {
   return (
+    <Link href={`/states/${state._id}`}>
     <div>
       <div className="relative border">
         <img
@@ -30,6 +32,7 @@ const StateBox = ({state}) => {
         </p>
       </div>
     </div>
+    </Link>
   );
 };
 

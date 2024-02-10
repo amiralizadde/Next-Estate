@@ -26,9 +26,9 @@ import { BsSignpost2 } from "react-icons/bs";
 import connectionToDB from "@/utils/db";
 import StateModels from "@/models/states";
 
-const DetailsHome = ({dataStates}) => {
-  const {values}= dataStates
-  console.log('values -> ',values);
+const DetailsHome = ({ dataStates }) => {
+  const { values } = dataStates;
+  console.log("values -> ", values);
   return (
     <div className="mt-16 ">
       {/* images home */}
@@ -37,7 +37,7 @@ const DetailsHome = ({dataStates}) => {
           <img
             src={`/${dataStates.image}`}
             alt=""
-            className="w-full h-[80vh] object-cover"
+            className="w-full h-[80vh] object-contain "
           />
         </div>
       </header>
@@ -47,7 +47,9 @@ const DetailsHome = ({dataStates}) => {
           {/* general Information */}
           <div className="my-5 lg:flex lg:items-center lg:justify-evenly ">
             <p className="text-2xl text-blue-300 font-bold my-5">
-              { values.statusAd === 'rent' ? ' ودیعه '+ Number(values.deposit).toLocaleString() : Number(values.price).toLocaleString() } تومان
+              {values.statusAd === "rent"
+                ? " ودیعه " + Number(values.deposit).toLocaleString()
+                : Number(values.price).toLocaleString()}تومان
             </p>
 
             <div className="child:my-4 grid xs:grid-cols-2 lg:grid-cols-4 lg:child:mx-3 ">
@@ -55,7 +57,7 @@ const DetailsHome = ({dataStates}) => {
                 <LiaHotjar className="text-4xl " />
                 <p className="flex flex-col ms-2">
                   <span className="text-xs"> گرمایش </span>
-                  <span className="text-xs font-bold"> {values.heating } </span>
+                  <span className="text-xs font-bold"> {values.heating} </span>
                 </p>
               </div>
 
@@ -70,14 +72,16 @@ const DetailsHome = ({dataStates}) => {
                 <IoBedOutline className="text-4xl " />
                 <p className="flex flex-col ms-2">
                   <span className="text-xs"> تعداد خواب </span>
-                  <span className="text-xs font-bold"> {values.room }</span>
+                  <span className="text-xs font-bold"> {values.room}</span>
                 </p>
               </div>
               <div className="flex">
                 <SlSizeFullscreen className="text-3xl " />
                 <p className="flex flex-col ms-2">
                   <span className="text-xs"> اندازه ملک </span>
-                  <span className="text-xs font-bold"> { values.meterage }متر </span>
+                  <span className="text-xs font-bold">
+                    {values.meterage}متر
+                  </span>
                 </p>
               </div>
             </div>
@@ -89,13 +93,13 @@ const DetailsHome = ({dataStates}) => {
 
           <div className=" py-5  flex items-center justify-between w-full">
             <div className="w-2/3 ">
-              <p className="text-xl md:text-4xl" >  {values.belvar}  </p>
+              <p className="text-xl md:text-4xl"> {values.belvar} </p>
               <p className="text-xs mt-4"> ۱۲ بهمن ۱۴۰۲ </p>
             </div>
             <div className="md:me-5 ">
               <p className="text-sm bg-blue-400 w-16 text-center rounded text-white py-1">
-                  {values.statusAd}
-               </p>
+                {values.statusAd}
+              </p>
               <p className="flex flex-col xs:flex-row mt-4">
                 <span className="text-sm"> شناسه ملک : </span>
                 <span className="text-sm font-bold "> 1255 </span>
@@ -121,64 +125,56 @@ const DetailsHome = ({dataStates}) => {
                 <li className="flex items-center my-2">
                   <MdOutlineBedroomChild className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    اتاق خواب :{" "}
+                    اتاق خواب :
                   </span>
-                  <span> 2 </span>
+                  <span> {values.room} </span>
                 </li>
                 <li className="flex items-center my-2">
                   <FaShower className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    حمام :{" "}
+                    حمام :
                   </span>
                   <span> 1 </span>
                 </li>
                 <li className="flex items-center my-2">
                   <SlSizeFullscreen className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    اندازه ملک :{" "}
+                    اندازه ملک :
                   </span>
-                  <span> 720متر </span>
+                  <span> {values.meterage}متر </span>
                 </li>
                 <li className="flex items-center my-2">
                   <CiLineHeight className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    طبقه :{" "}
+                    طبقه :
                   </span>
-                  <span> 15 </span>
+                  <span> {values.floor} </span>
                 </li>
                 <li className="flex items-center my-2">
                   <FaWarehouse className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    کل طبقات :{" "}
+                    کل طبقات :
                   </span>
-                  <span> 12 </span>
+                  <span> {values.allfloor} </span>
                 </li>
                 <li className="flex items-center my-2">
                   <FaWarehouse className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    کل طبقات :{" "}
+                    کل طبقات :
                   </span>
-                  <span> 12 </span>
+                  <span> {values.allfloor} </span>
                 </li>
                 <li className="flex items-center my-2">
                   <LiaHotjar className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    گرمایش :{" "}
+                    گرمایش :
                   </span>
-                  <span> شوفاز </span>
+                  <span> {values.heating} </span>
                 </li>
                 <li className="flex items-center my-2">
                   <LuSofa className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    محل اقامت :{" "}
+                    محل اقامت :
                   </span>
                   <span> مبلمان </span>
                 </li>
@@ -190,64 +186,56 @@ const DetailsHome = ({dataStates}) => {
                 <li className="flex items-center my-2">
                   <MdHeight className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    ارتفاع سقف :{" "}
+                    ارتفاع سقف :
                   </span>
                   <span> 3.4متر </span>
                 </li>
                 <li className="flex items-center my-2">
                   <RxWidth className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    فاصله از مرکز :{" "}
+                    فاصله از مرکز :
                   </span>
                   <span> مرکز شهر </span>
                 </li>
                 <li className="flex items-center my-2">
                   <CiParking1 className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    پارکینگ :{" "}
+                    پارکینگ :
                   </span>
                   <span> دارد </span>
                 </li>
                 <li className="flex items-center my-2">
                   <MdOutlineDateRange className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    تاریخ انتشار :{" "}
+                    تاریخ انتشار :
                   </span>
                   <span> 1402/11/10 </span>
                 </li>
                 <li className="flex items-center my-2">
                   <FaWarehouse className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    کل طبقات :{" "}
+                    کل طبقات :
                   </span>
-                  <span> 12 </span>
+                  <span> {values.allfloor} </span>
                 </li>
                 <li className="flex items-center my-2">
                   <FaWarehouse className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    کل طبقات :{" "}
+                    کل طبقات :
                   </span>
-                  <span> 12 </span>
+                  <span> {values.allfloor} </span>
                 </li>
                 <li className="flex items-center my-2">
                   <LiaHotjar className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    گرمایش :{" "}
+                    گرمایش :
                   </span>
-                  <span> شوفاز </span>
+                  <span> {values.heating} </span>
                 </li>
                 <li className="flex items-center my-2">
                   <LuSofa className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
-                    {" "}
-                    محل اقامت :{" "}
+                    محل اقامت :
                   </span>
                   <span> مبلمان </span>
                 </li>
@@ -266,7 +254,7 @@ const DetailsHome = ({dataStates}) => {
                   <span className="me-4 ms-1 text-sm text-black/50">
                     سپرده :
                   </span>
-                  <span> 1900 </span>
+                  <span> {values.statusAd === 'rent' ? Number(values.deposit).toLocaleString():Number(values.price).toLocaleString()} </span>
                 </li>
                 <li className="flex items-center my-2">
                   <TbDog className="text-base text-black/50" />
@@ -275,13 +263,17 @@ const DetailsHome = ({dataStates}) => {
                   </span>
                   <span> غیرمجاز </span>
                 </li>
-                <li className="flex items-center my-2">
+
+                {values.statusAd === 'sell' && (
+                  <li className="flex items-center my-2">
                   <CiDollar className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
                     شیوه پرداخت :
                   </span>
-                  <span> ماهیانه </span>
+                  <span> {values.paymentMethod} </span>
                 </li>
+                )}
+              
                 <li className="flex items-center my-2">
                   <GiExitDoor className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
@@ -299,13 +291,16 @@ const DetailsHome = ({dataStates}) => {
             </div>
             <div className="col-start-1 col-span-2 md:col-start-2 md:col-span-2">
               <ul className="grid grid-cols-1 lg:grid-cols-2">
+               {(values.statusAd === 'rent' || values.statusAd === 'mortgage' )&&(
                 <li className="flex items-center my-2">
-                  <MdAddHome className="text-base text-black/50" />
-                  <span className="me-4 ms-1 text-sm text-black/50">
-                    شارژ ساختمان :
-                  </span>
-                  <span> 110 </span>
+                <MdAddHome className="text-base text-black/50" />
+                <span className="me-4 ms-1 text-sm text-black/50">
+                  شارژ ساختمان :
+                </span>
+                <span> {Number(values.BuildingCharge).toLocaleString()} تومان</span>
                 </li>
+               )}
+               
                 <li className="flex items-center my-2">
                   <PiTelevisionSimpleBold className="text-base text-black/50" />
                   <span className="me-4 ms-1 text-sm text-black/50">
@@ -330,67 +325,16 @@ const DetailsHome = ({dataStates}) => {
             </div>
             <div className="col-start-1 col-span-2 md:col-start-2 md:col-span-2">
               <ul className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3">
-                <li className="flex items-center my-2">
-                  <CheckIcon className="text-base text-black/50 w-5 border border-black rounded-full me-1" />
-                  <span className="me-4 ms-1 text-base text-black/50">
-                    آب گرم
-                  </span>
-                </li>
 
-                <li className="flex items-center my-2">
-                  <CheckIcon className="text-base text-black/50 w-5 border border-black rounded-full me-1" />
-                  <span className="me-4 ms-1 text-base text-black/50">
-                    آب گرم
-                  </span>
-                </li>
-                <li className="flex items-center my-2">
-                  <CheckIcon className="text-base text-black/50 w-5 border border-black rounded-full me-1" />
-                  <span className="me-4 ms-1 text-base text-black/50">
-                    آسانسور
-                  </span>
-                </li>
-                <li className="flex items-center my-2">
-                  <CheckIcon className="text-base text-black/50 w-5 border border-black rounded-full me-1" />
-                  <span className="me-4 ms-1 text-base text-black/50">
-                    استخر
-                  </span>
-                </li>
-                <li className="flex items-center my-2">
-                  <CheckIcon className="text-base text-black/50 w-5 border border-black rounded-full me-1" />
-                  <span className="me-4 ms-1 text-base text-black/50">
-                    آشپزخانه مدرن
-                  </span>
-                </li>
-                <li className="flex items-center my-2">
-                  <CheckIcon className="text-base text-black/50 w-5 border border-black rounded-full me-1" />
-                  <span className="me-4 ms-1 text-base text-black/50">
-                    باشگاه بدنسازی
-                  </span>
-                </li>
-                <li className="flex items-center my-2">
-                  <CheckIcon className="text-base text-black/50 w-5 border border-black rounded-full me-1" />
-                  <span className="me-4 ms-1 text-base text-black/50">
-                    بالکن
-                  </span>
-                </li>
-                <li className="flex items-center my-2">
-                  <CheckIcon className="text-base text-black/50 w-5 border border-black rounded-full me-1" />
-                  <span className="me-4 ms-1 text-base text-black/50">
-                    پارکینگ
-                  </span>
-                </li>
-                <li className="flex items-center my-2">
-                  <CheckIcon className="text-base text-black/50 w-5 border border-black rounded-full me-1" />
-                  <span className="me-4 ms-1 text-base text-black/50">
-                    وای فای
-                  </span>
-                </li>
-                <li className="flex items-center my-2">
-                  <CheckIcon className="text-base text-black/50 w-5 border border-black rounded-full me-1" />
-                  <span className="me-4 ms-1 text-base text-black/50">
-                    سنگ گرانیت
-                  </span>
-                </li>
+                {dataStates.features.map(feature=>(
+                  <li className="flex items-center my-2">
+                   <CheckIcon className="text-base text-black/50 w-5 border border-black rounded-full me-1" />
+                   <span className="me-4 ms-1 text-base text-black/50">
+                    {feature.featureItem}
+                   </span>
+                  </li>
+                )
+                )}
               </ul>
             </div>
 
@@ -406,7 +350,7 @@ const DetailsHome = ({dataStates}) => {
                     <MapPinIcon className="w-5 text-black/50 me-2 " />
                     <span className="text-black/50"> آدرس کوتاه: </span>
                   </p>
-                  <p className="px-8 my-2"> تهران منطقه نواب </p>
+                  <p className="px-8 my-2"> {values.belvar} </p>
                 </div>
                 <div>
                   <p className="flex">
@@ -414,7 +358,7 @@ const DetailsHome = ({dataStates}) => {
                     <span className="text-black/50"> آدرس دقیق: </span>
                   </p>
                   <p className="px-8 my-2">
-                    تهران منطقه نواب کوچه گلستان فرفی پورپرانداخ پلاک 4
+                   {values.fullAddress}
                   </p>
                 </div>
                 <div>
@@ -434,17 +378,14 @@ const DetailsHome = ({dataStates}) => {
 };
 
 export async function getStaticPaths(context) {
-  
-  connectionToDB()
-  const states =await StateModels.find({})
+  connectionToDB();
+  const states = await StateModels.find({});
 
-  const paths =  states.map(state=>{
+  const paths = states.map((state) => {
     return {
-      params:{id:String(state._id)}
-    }
-  })
-  
-  console.log('paths ->' ,paths);
+      params: { id: String(state._id) },
+    };
+  });
 
   return {
     paths,
@@ -453,15 +394,12 @@ export async function getStaticPaths(context) {
 }
 
 export async function getStaticProps(context) {
-  
-  connectionToDB()
-  const states =await StateModels.findOne({_id:context.params.id})
-
-  console.log('states 1 ->', states);
+  connectionToDB();
+  const states = await StateModels.findOne({ _id: context.params.id });
 
   return {
     props: {
-      dataStates:JSON.parse(JSON.stringify(states)),
+      dataStates: JSON.parse(JSON.stringify(states)),
     },
   };
 }

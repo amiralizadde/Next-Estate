@@ -15,4 +15,9 @@ const createAd = (form) => {
   );
 };
 
+
+// const getAllStates = ()=>{
+//   return apiRequest.get('/')
+// }
+
 export { createAd };

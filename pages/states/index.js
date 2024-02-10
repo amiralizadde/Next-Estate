@@ -10,7 +10,9 @@ import "react-range-slider-input/dist/style.css";
 import styles from "../../styles/states.module.css";
 import FeatureItems from "@/components/modules/FeatureItems";
 import { featuresItemHome } from "@/db/db";
-import {HomeIcon} from "@heroicons/react/24/outline";
+import { HomeIcon } from "@heroicons/react/24/outline";
+import StateModels from "@/models/states";
+import UserModels from "@/models/users";
 
 const index = () => {
   const [cites, setCites] = useState("");
@@ -20,17 +22,13 @@ const index = () => {
   const [priceRange, setPriceRange] = useState([0, 100000]);
   const [filterdHomeItems, setFilterdHomeItems] = useState([]);
 
-  useEffect(() => {
-    console.log(filterdHomeItems);
-  }, [filterdHomeItems]);
+  
 
   return (
     <div className="mt-20 py-12 px-5">
       <div className="lg:grid grid-cols-2">
         {/* Filtered Items 1 */}
         <div>
-
-
           <div className="md:grid md:grid-cols-4 items-center ">
             <div className=" flex flex-col relative me-2  md:col-start-1 md:col-span-1">
               <label
@@ -264,7 +262,6 @@ const index = () => {
                 </span>
               </div>
 
-
               <div className="flex text-sm child:mx-1 my-4">
                 <p className="w-1/3 "> حمام </p>
                 <span className="border w-[22px] h-[22px] items-center text-base text-center rounded-full">
@@ -289,70 +286,132 @@ const index = () => {
             <div></div>
           </div>
 
-            <button className="my-8 border bg-yellow-100 pt-3 pb-2 px-14 text-sm font-bold"> نتایج فیلتر </button>
+          <button className="my-8 border bg-yellow-100 pt-3 pb-2 px-14 text-sm font-bold">
+            نتایج فیلتر
+          </button>
 
-              {/* show Homes Items */}
-            <div className="child:my-3 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 p-5">
-
-                <div>
-                  <div className="relative border">
-                    <img src="/homeImage/house1.jpg" className="w-full  h-full object-cover" alt="" />
-                    <p className="absolute top-3 right-3 bg-black/50 text-white px-2">برای اجاره</p>
-                    <p className="absolute bottom-3 right-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:right-1">شناسه 1112</p>
-                    <p className="absolute bottom-3 left-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:left-1" >  900,000 تومان </p>
-                  </div>
-                  <div>
-                   <p className="text-xl font-bold my-2"> خیابان طالقانی میدان ولیعصر </p>
-                   <p className="text-black/50"> تهران منطقه 4 </p>
-                   <p className="flex"> <HomeIcon className="w-4 mx-1" /> <span>700متر</span>_ <span className="mx-1"> 2 </span>_ <span className="mx-1"> مبلمان </span> </p>
-                  </div>
-                </div>
-
-                <div>
-                  <div className="relative border">
-                    <img src="/homeImage/house2.jpg" className="w-full  h-full object-cover" alt="" />
-                    <p className="absolute top-3 right-3 bg-black/50 text-white px-2">برای اجاره</p>
-                    <p className="absolute bottom-3 right-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:right-1 ">شناسه 1112</p>
-                    <p className="absolute bottom-3 left-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:left-1 ">  900,000 تومان </p>
-                  </div>
-                  <div>
-                   <p className="text-xl font-bold my-2"> خیابان طالقانی میدان ولیعصر </p>
-                   <p className="text-black/50"> تهران منطقه 4 </p>
-                   <p className="flex"> <HomeIcon className="w-4 mx-1" /> <span>700متر</span>_ <span className="mx-1"> 2 </span>_ <span className="mx-1"> مبلمان </span> </p>
-                  </div>
-                </div>
-
-                <div>
-                  <div className="relative border">
-                    <img src="/homeImage/house3.jpg" className="w-full  h-full object-cover" alt="" />
-                    <p className="absolute top-3 right-3 bg-black/50 text-white px-2">برای اجاره</p>
-                    <p className="absolute bottom-3 right-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:right-1 ">شناسه 1112</p>
-                    <p className="absolute bottom-3 left-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:left-1 ">  900,000 تومان </p>
-                  </div>
-                  <div>
-                   <p className="text-xl font-bold my-2"> خیابان طالقانی میدان ولیعصر </p>
-                   <p className="text-black/50"> تهران منطقه 4 </p>
-                   <p className="flex"> <HomeIcon className="w-4 mx-1" /> <span>700متر</span>_ <span className="mx-1"> 2 </span>_ <span className="mx-1"> مبلمان </span> </p>
-                  </div>
-                </div>
-
-                <div>
-                  <div className="relative border">
-                    <img src="/homeImage/house4.jpg" className="w-full  h-full object-cover" alt="" />
-                    <p className="absolute top-3 right-3 bg-black/50 text-white px-2">برای اجاره</p>
-                    <p className="absolute bottom-3 right-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:right-1">شناسه 1112</p>
-                    <p className="absolute bottom-3 left-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:left-1">  900,000 تومان </p>
-                  </div>
-                  <div>
-                   <p className="text-xl font-bold my-2"> خیابان طالقانی میدان ولیعصر </p>
-                   <p className="text-black/50"> تهران منطقه 4 </p>
-                   <p className="flex"> <HomeIcon className="w-4 mx-1" /> <span>700متر</span>_ <span className="mx-1"> 2 </span>_ <span className="mx-1"> مبلمان </span> </p>
-                  </div>
-                </div>
-
+          {/* show Homes Items */}
+          <div className="child:my-3 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 p-5">
+            <div>
+              <div className="relative border">
+                <img
+                  src="/homeImage/house1.jpg"
+                  className="w-full  h-full object-cover"
+                  alt=""
+                />
+                <p className="absolute top-3 right-3 bg-black/50 text-white px-2">
+                  برای اجاره
+                </p>
+                <p className="absolute bottom-3 right-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:right-1">
+                  شناسه 1112
+                </p>
+                <p className="absolute bottom-3 left-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:left-1">
+                  900,000 تومان
+                </p>
+              </div>
+              <div>
+                <p className="text-xl font-bold my-2">
+                  خیابان طالقانی میدان ولیعصر
+                </p>
+                <p className="text-black/50"> تهران منطقه 4 </p>
+                <p className="flex">
+                  <HomeIcon className="w-4 mx-1" /> <span>700متر</span>_
+                  <span className="mx-1"> 2 </span>_
+                  <span className="mx-1"> مبلمان </span>
+                </p>
+              </div>
             </div>
 
+            <div>
+              <div className="relative border">
+                <img
+                  src="/homeImage/house2.jpg"
+                  className="w-full  h-full object-cover"
+                  alt=""
+                />
+                <p className="absolute top-3 right-3 bg-black/50 text-white px-2">
+                  برای اجاره
+                </p>
+                <p className="absolute bottom-3 right-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:right-1 ">
+                  شناسه 1112
+                </p>
+                <p className="absolute bottom-3 left-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:left-1 ">
+                  900,000 تومان
+                </p>
+              </div>
+              <div>
+                <p className="text-xl font-bold my-2">
+                  خیابان طالقانی میدان ولیعصر
+                </p>
+                <p className="text-black/50"> تهران منطقه 4 </p>
+                <p className="flex">
+                  <HomeIcon className="w-4 mx-1" /> <span>700متر</span>_
+                  <span className="mx-1"> 2 </span>_
+                  <span className="mx-1"> مبلمان </span>
+                </p>
+              </div>
+            </div>
 
+            <div>
+              <div className="relative border">
+                <img
+                  src="/homeImage/house3.jpg"
+                  className="w-full  h-full object-cover"
+                  alt=""
+                />
+                <p className="absolute top-3 right-3 bg-black/50 text-white px-2">
+                  برای اجاره
+                </p>
+                <p className="absolute bottom-3 right-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:right-1 ">
+                  شناسه 1112
+                </p>
+                <p className="absolute bottom-3 left-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:left-1 ">
+                  900,000 تومان
+                </p>
+              </div>
+              <div>
+                <p className="text-xl font-bold my-2">
+                  خیابان طالقانی میدان ولیعصر
+                </p>
+                <p className="text-black/50"> تهران منطقه 4 </p>
+                <p className="flex">
+                  <HomeIcon className="w-4 mx-1" /> <span>700متر</span>_
+                  <span className="mx-1"> 2 </span>_
+                  <span className="mx-1"> مبلمان </span>
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <div className="relative border">
+                <img
+                  src="/homeImage/house4.jpg"
+                  className="w-full  h-full object-cover"
+                  alt=""
+                />
+                <p className="absolute top-3 right-3 bg-black/50 text-white px-2">
+                  برای اجاره
+                </p>
+                <p className="absolute bottom-3 right-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:right-1">
+                  شناسه 1112
+                </p>
+                <p className="absolute bottom-3 left-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:left-1">
+                  900,000 تومان
+                </p>
+              </div>
+              <div>
+                <p className="text-xl font-bold my-2">
+                  خیابان طالقانی میدان ولیعصر
+                </p>
+                <p className="text-black/50"> تهران منطقه 4 </p>
+                <p className="flex">
+                  <HomeIcon className="w-4 mx-1" /> <span>700متر</span>_
+                  <span className="mx-1"> 2 </span>_
+                  <span className="mx-1"> مبلمان </span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Map */}
@@ -363,5 +422,16 @@ const index = () => {
     </div>
   );
 };
+
+export async function getStaticProps (context){
+
+  let states =await UserModels.findOne({ username :"amir12"})
+  console.log('context -> ' ,context);
+
+  return{
+    props:{name:'amir'}
+  }
+}
+
 
 export default index;

@@ -15,16 +15,33 @@ import StateModels from "@/models/states";
 import UserModels from "@/models/users";
 import connectionToDB from "@/utils/db";
 import StateBox from "@/components/modules/StateBox";
+import { useRouter } from "next/router";
 
 const index = ({states}) => {
+
+  const [dataStates ,setDataStates] = useState(states)
+
   const [cites, setCites] = useState("");
   const [status, setStatus] = useState("");
   const [isShowCites, setIsShowCites] = useState(false);
   const [isShowStatus, setIsShowStatus] = useState(false);
   const [priceRange, setPriceRange] = useState([0, 100000]);
   const [filterdHomeItems, setFilterdHomeItems] = useState([]);
+  let router = useRouter()
+  
+  useEffect(()=>{
+    console.log('router.query.q ->',router.query);
+    if (router.query.q){
+      const newStates = dataStates.filter(state=>{
+        console.log('state ->',state);
+        return state.values.statusAd === 'rent'
+      })
+      setDataStates(newStates)
+      console.log('newStates->',newStates);
+     
+    }
+  },[router.query])
 
-  console.log('states ->',states);
 
   return (
     <div className="mt-20 py-12 px-5">
@@ -296,8 +313,8 @@ const index = ({states}) => {
           <div className="child:my-3 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 p-5">
     
                   
-         { states.length ? (
-          states.map(state=>(
+         { dataStates.length ? (
+          dataStates.map(state=>(
             <StateBox state={state} />
           ))
          ):(
@@ -318,7 +335,7 @@ const index = ({states}) => {
 export async function getStaticProps() {
  
     connectionToDB()
-      const states = await StateModels.find({});
+    const states = await StateModels.find({});
      
   return {
     props:{

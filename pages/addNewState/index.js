@@ -469,7 +469,6 @@ export default function index({ name }) {
 }
 
 export async function getStaticProps(context) {
-  console.log("context add new State page ->", context.params);
 
   return {
     props: { name: "amir" },

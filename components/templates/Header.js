@@ -3,13 +3,43 @@ import styles from "../../styles/home.module.css";
 import Image from "next/image";
 import { MapPinIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useFormik } from "formik";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const [cites, setCites] = useState("");
   const [status, setStatus] = useState("");
   const [isShowCites, setIsShowCites] = useState(false);
   const [isShowStatus, setIsShowStatus] = useState(false);
+  let router = useRouter()
+
+  useEffect(() => {
+    form.setValues({
+      ...form.values,
+      city:cites,
+      statusAd: status
+    });
+  }, [status]);
+
+  let form = useFormik({
+    initialValues:{city:"tehran",statusAd:''},
+    validate:(values)=>{
+      console.log('valeus -> ' ,values);
+      let errors = {}
+
+      if (values.statusAd === '') {
+        errors.statusAd = 'یک مورد را انتخاب کنید '
+      }
+      console.log('errors',errors);
+      return errors
+    },
+    onSubmit:(values)=>{
+      router.push(`/states?q=${values.statusAd}`)
+    }
+  })
+
+
 
   return (
     <div>
@@ -42,7 +72,7 @@ const Header = () => {
               />
               <span className="text-white mt-[10px]">خانه حیاط دار</span>
             </li>
-            
+
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home2.png"
@@ -52,7 +82,7 @@ const Header = () => {
               />
               <span className="text-white mt-[10px]">زمین و ملک </span>
             </li>
-            
+
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home3.png"
@@ -62,7 +92,7 @@ const Header = () => {
               />
               <span className="text-white mt-[10px]">مغازه</span>
             </li>
-            
+
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home4.png"
@@ -72,7 +102,7 @@ const Header = () => {
               />
               <span className="text-white mt-[10px]">واحد اداری</span>
             </li>
-            
+
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home6.png"
@@ -86,8 +116,9 @@ const Header = () => {
         </div>
         <div className=" w-4/6 my-16  ">
           <form
-            action="#"
+            
             className="w-full grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 child:my-5"
+            onSubmit={form.handleSubmit}
           >
             <div className=" flex flex-col relative me-2 lg:col-start-1 lg:col-end-3">
               <label
@@ -100,7 +131,9 @@ const Header = () => {
               <ChevronDownIcon className="w-6 absolute left-2 top-2 text-white " />
               <input
                 type="text"
+                name='city'
                 value={cites}
+                onChange={form.handleChange.city}
                 placeholder="همه موقعیت ها"
                 className="h-10  cursor-pointer bg-transparent border text-sm text-white px-8 child:text-black placeholder:ps-2 placeholder:text-white"
                 onClick={() => setIsShowCites(!isShowCites)}
@@ -120,15 +153,7 @@ const Header = () => {
                   >
                     همه موقعیت ها
                   </li>
-                  <li
-                    onClick={(e) => {
-                      setCites(e.target.innerHTML);
-                      setIsShowCites(false);
-                    }}
-                  >
-                    {" "}
-                    تبریز{" "}
-                  </li>
+
                   <li
                     onClick={(e) => {
                       setCites(e.target.innerHTML);
@@ -136,14 +161,6 @@ const Header = () => {
                     }}
                   >
                     تهران{" "}
-                  </li>
-                  <li
-                    onClick={(e) => {
-                      setCites(e.target.innerHTML);
-                      setIsShowCites(false);
-                    }}
-                  >
-                    اصفهان
                   </li>
                 </ul>
               )}
@@ -161,11 +178,15 @@ const Header = () => {
               <input
                 type="text"
                 id="status"
-                defaultValue={status}
+                name="statusAd"
+                value={status}
+                onChange={form.handleChange.statusAd}
+                onBlur={form.handleBlur}
                 placeholder="انتخاب کنید"
                 className="h-10 cursor-pointer bg-transparent border text-sm text-white px-10 child:text-black placeholder:ps-2 placeholder:text-white"
                 onClick={() => setIsShowStatus(!isShowStatus)}
               />
+               <span className="text-white text-xs">{form.errors.statusAd && form.touched.statusAd && form.errors.statusAd}</span>
               {isShowStatus && (
                 <ul
                   type="text"
@@ -176,6 +197,7 @@ const Header = () => {
                   <li
                     onClick={(e) => {
                       setStatus(e.target.innerHTML);
+                      setCites('تهران')
                       setIsShowStatus(false);
                     }}
                   >
@@ -185,6 +207,7 @@ const Header = () => {
                   <li
                     onClick={(e) => {
                       setStatus(e.target.innerHTML);
+                      setCites('تهران')
                       setIsShowStatus(false);
                     }}
                   >
@@ -194,6 +217,7 @@ const Header = () => {
                   <li
                     onClick={(e) => {
                       setStatus(e.target.innerHTML);
+                      setCites('تهران')
                       setIsShowStatus(false);
                     }}
                   >
@@ -202,7 +226,7 @@ const Header = () => {
                 </ul>
               )}
             </div>
-            <button className="text-xs h-10 tracking-normal bg-yellow-100 text-black hover:bg-transparent transition border border-yellow-100 hover:text-white font-bold">
+            <button type="submit" className="text-xs h-10 tracking-normal bg-yellow-100 text-black hover:bg-transparent transition border border-yellow-100 hover:text-white font-bold">
               جستجو{" "}
             </button>
           </form>

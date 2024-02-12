@@ -3,7 +3,7 @@ import {
   MapPinIcon,
   PencilSquareIcon,
 } from "@heroicons/react/24/outline";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
@@ -16,32 +16,82 @@ import UserModels from "@/models/users";
 import connectionToDB from "@/utils/db";
 import StateBox from "@/components/modules/StateBox";
 import { useRouter } from "next/router";
+import { filterData } from "@/utils/util";
 
-const index = ({states}) => {
-
-  const [dataStates ,setDataStates] = useState(states)
+const index = ({ states }) => {
+  const [dataStates, setDataStates] = useState(states);
+  const [typeState, setTypeState] = useState([]);
 
   const [cites, setCites] = useState("");
   const [status, setStatus] = useState("");
   const [isShowCites, setIsShowCites] = useState(false);
   const [isShowStatus, setIsShowStatus] = useState(false);
-  const [priceRange, setPriceRange] = useState([0, 100000]);
+  const [maxMetrage, setMaxMetrage] = useState(null);
+  const [minMetrage, setMinMetrage] = useState(null);
+  const [priceRange, setPriceRange] = useState([0, 1000000000]);
+  const [room, setRoom] = useState(0);
+  const [shower, setShower] = useState(0);
   const [filterdHomeItems, setFilterdHomeItems] = useState([]);
-  let router = useRouter()
-  
-  useEffect(()=>{
-    console.log('router.query.q ->',router.query);
-    if (router.query.q){
-      const newStates = dataStates.filter(state=>{
-        console.log('state ->',state);
-        return state.values.statusAd === 'rent'
-      })
-      setDataStates(newStates)
-      console.log('newStates->',newStates);
-     
-    }
-  },[router.query])
 
+  let router = useRouter();
+
+  let apartment = useRef();
+  let home = useRef();
+  let land = useRef();
+  let shop = useRef();
+  let AdministrativeUnit = useRef();
+  let villa = useRef();
+
+  useEffect(() => {
+    if (router.query.q) {
+      const newStates = dataStates.filter((state) => {
+        return state.values.statusAd === "rent";
+      });
+      setDataStates(newStates);
+    }
+  }, [router.query]);
+
+  const addTypeState = (type) => {
+    const isExist = typeState.some((state) => {
+      return state === type;
+    });
+    if (isExist) {
+      setTypeState((prevState) => {
+        return prevState.filter((state) => {
+          return state !== type;
+        });
+      });
+    } else {
+      setTypeState((prevState) => [...prevState, type]);
+    }
+  };
+
+  const addFeatures = (checked, feature) => {
+    checked
+      ? setFilterdHomeItems((prevState) => [...prevState, feature])
+      : setFilterdHomeItems((prevState) => {
+          return prevState.filter((featureItem) => {
+            return featureItem.id !== feature.id;
+          });
+        });
+  };
+
+  useEffect(() => {
+    console.log("dataStates -> ", dataStates);
+  }, [dataStates]);
+
+  const filterdata = () => {
+    const data = {
+      status,
+      priceRange,
+      room,
+      typeState,
+    };
+
+    const filteredData = filterData(data ,states )
+
+    setDataStates(filteredData)
+  };
 
   return (
     <div className="mt-20 py-12 px-5">
@@ -102,75 +152,107 @@ const index = ({states}) => {
             </div>
             <div className="  md:col-start-2 md:col-span-3">
               <ul className=" grid grid-cols-1   sm:grid-cols-3 lg:grid-cols-6 child:border-b child:sm:border-0  child:h-full child:my-1  child:flex child:flex-col child:items-center child:justify-center">
-                <li className="cursor-pointer lg:border-none">
+                <li
+                  className="cursor-pointer"
+                  ref={apartment}
+                  onClick={(e) => {
+                    addTypeState("apartment");
+                    apartment.current.classList.toggle("child:font-bold");
+                  }}
+                >
                   <Image
                     src="/filteredItems/black.png"
                     width={100}
                     height={100}
                     className="object-cover w-12 transition hover:-translate-y-1"
                   />
-                  <span className="mt-[10px] text-sm text-black/50">
-                    آپارتمان
-                  </span>
+                  <span className="mt-[10px] text-sm ">آپارتمان</span>
                 </li>
-                <li className="cursor-pointer">
+                <li
+                  className="cursor-pointer"
+                  ref={home}
+                  onClick={(e) => {
+                    addTypeState("home");
+                    home.current.classList.toggle("child:font-bold");
+                  }}
+                >
                   <Image
                     src="/filteredItems/black1.png"
                     width={100}
                     height={100}
                     className="object-cover w-12 transition hover:-translate-y-2 "
                   />
-                  <span className=" mt-[10px] text-sm text-black/50">
-                    خانه حیاط دار
-                  </span>
+                  <span className=" mt-[10px] text-sm ">خانه حیاط دار</span>
                 </li>
 
-                <li className="cursor-pointer">
+                <li
+                  className="cursor-pointer"
+                  ref={land}
+                  onClick={(e) => {
+                    addTypeState("land");
+                    land.current.classList.toggle("child:font-bold");
+                  }}
+                >
                   <Image
                     src="/filteredItems/black2.png"
                     width={100}
                     height={100}
                     className="object-cover w-12 transition hover:-translate-y-2 "
                   />
-                  <span className=" mt-[10px] text-sm text-black/50">
-                    زمین و ملک{" "}
-                  </span>
+                  <span className=" mt-[10px] text-sm ">زمین و ملک </span>
                 </li>
 
-                <li className="cursor-pointer">
+                <li
+                  className="cursor-pointer"
+                  ref={shop}
+                  onClick={(e) => {
+                    addTypeState("shop");
+                    shop.current.classList.toggle("child:font-bold");
+                  }}
+                >
                   <Image
                     src="/filteredItems/black3.png"
                     width={100}
                     height={100}
                     className="object-cover w-12 transition hover:-translate-y-2 "
                   />
-                  <span className=" mt-[10px] text-sm text-black/50">
-                    مغازه
-                  </span>
+                  <span className=" mt-[10px] text-sm ">مغازه</span>
                 </li>
 
-                <li className="cursor-pointer">
+                <li
+                  className="cursor-pointer"
+                  ref={AdministrativeUnit}
+                  onClick={(e) => {
+                    addTypeState("AdministrativeUnit");
+                    AdministrativeUnit.current.classList.toggle(
+                      "child:font-bold"
+                    );
+                  }}
+                >
                   <Image
                     src="/filteredItems/black5.png"
                     width={100}
                     height={100}
                     className="object-cover w-12 transition hover:-translate-y-2 "
                   />
-                  <span className=" mt-[10px] text-sm text-black/50">
-                    واحد اداری
-                  </span>
+                  <span className=" mt-[10px] text-sm ">واحد اداری</span>
                 </li>
 
-                <li className="cursor-pointer">
+                <li
+                  className="cursor-pointer"
+                  ref={villa}
+                  onClick={(e) => {
+                    addTypeState("villa");
+                    villa.current.classList.toggle("child:font-bold");
+                  }}
+                >
                   <Image
                     src="/filteredItems/black6.png"
                     width={100}
                     height={100}
                     className="object-cover w-12 transition hover:-translate-y-2"
                   />
-                  <span className=" mt-[10px] text-sm text-black/50">
-                    ویلایی
-                  </span>
+                  <span className=" mt-[10px] text-sm ">ویلایی</span>
                 </li>
               </ul>
             </div>
@@ -216,51 +298,39 @@ const index = ({states}) => {
                       setIsShowCites(false);
                     }}
                   >
-                    تبریز
-                  </li>
-                  <li
-                    onClick={(e) => {
-                      setCites(e.target.innerHTML);
-                      setIsShowCites(false);
-                    }}
-                  >
                     تهران
-                  </li>
-                  <li
-                    onClick={(e) => {
-                      setCites(e.target.innerHTML);
-                      setIsShowCites(false);
-                    }}
-                  >
-                    اصفهان
                   </li>
                 </ul>
               )}
               {/* </div> */}
             </div>
             {/* تعیین متراز */}
-            <div className="relative flex w-full mt-8  md:col-start-2 md:col-span-1">
+            {/* <div className="relative flex w-full mt-8  md:col-start-2 md:col-span-1">
               <input
                 type="text"
+                value={minMetrage}
+                onChange={e=>e.target.value}
                 className="border w-1/2 me-2 p-1 placeholder:text-sm"
                 placeholder="حداقل متر "
               />
               <input
                 type="text"
+                value={maxMetrage}
+                onChange={e=>e.target.value}
                 className="border w-1/2 ms-2 p-1 placeholder:text-sm"
                 placeholder="حداکثر متر"
               />
               <span className="absolute -top-5 right-0">اندازه</span>
-            </div>
+            </div> */}
             {/* تعیین قیمت */}
             <div className="md:col-start-3 md:col-span-2 md:px-3">
               <p className="my-3">
-                حدود قیمت را از <span>{priceRange[0]}</span> تا{" "}
-                <span>{priceRange[1]}</span>میلیون تومان{" "}
+                حدود قیمت را از <span>{priceRange[0].toLocaleString()}</span> تا{" "}
+                <span>{priceRange[1].toLocaleString()}</span> تومان{" "}
               </p>
               <RangeSlider
                 min={0}
-                max={100000000}
+                max={1000000000}
                 step={1000}
                 onInput={setPriceRange}
                 className={`${styles.priceRange}`}
@@ -272,22 +342,34 @@ const index = ({states}) => {
             <div className=" my-5 p-5 lg:px-0 lg:col-start-1 lg:col-span-1 lg:my-0">
               <div className="flex text-sm child:mx-1">
                 <p className="w-1/3 ">اتاق </p>
-                <span className="border w-[22px] h-[22px] items-center text-base text-center rounded-full">
+                <span
+                  className="border w-[22px] h-[22px] items-center text-base text-center rounded-full cursor-pointer"
+                  onClick={() => setRoom((prevState) => prevState + 1)}
+                >
                   +
                 </span>
-                <span>0</span>
-                <span className="border w-[22px] h-[22px] items-center text-base text-center rounded-full">
+                <span>{room}</span>
+                <span
+                  className="border w-[22px] h-[22px] items-center text-base text-center rounded-full cursor-pointer"
+                  onClick={() => setRoom((prevState) => prevState - 1)}
+                >
                   -
                 </span>
               </div>
 
               <div className="flex text-sm child:mx-1 my-4">
                 <p className="w-1/3 "> حمام </p>
-                <span className="border w-[22px] h-[22px] items-center text-base text-center rounded-full">
+                <span
+                  className="border w-[22px] h-[22px] items-center text-base text-center rounded-full cursor-pointer"
+                  onClick={() => setShower((prevState) => prevState + 1)}
+                >
                   +
                 </span>
-                <span>0</span>
-                <span className="border w-[22px] h-[22px] items-center text-base text-center rounded-full">
+                <span>{shower}</span>
+                <span
+                  className="border w-[22px] h-[22px] items-center text-base text-center rounded-full cursor-pointer"
+                  onClick={() => setShower((prevState) => prevState - 1)}
+                >
                   -
                 </span>
               </div>
@@ -296,7 +378,7 @@ const index = ({states}) => {
             <div className="lg:col-start-2 lg:col-span-3">
               <div className=" grid  grid-cols-2 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 ps-5">
                 {featuresItemHome.map((feature) => (
-                  <FeatureItems feature={feature} />
+                  <FeatureItems feature={feature} addFeatures={addFeatures} />
                 ))}
               </div>
             </div>
@@ -305,21 +387,20 @@ const index = ({states}) => {
             <div></div>
           </div>
 
-          <button className="my-8 border bg-yellow-100 pt-3 pb-2 px-14 text-sm font-bold">
+          <button
+            onClick={filterdata}
+            className="my-8 border bg-yellow-100 pt-3 pb-2 px-14 text-sm font-bold"
+          >
             نتایج فیلتر
           </button>
 
           {/* show Homes Items */}
           <div className="child:my-3 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 p-5">
-    
-                  
-         { dataStates.length ? (
-          dataStates.map(state=>(
-            <StateBox state={state} />
-          ))
-         ):(
-          <p>Loading</p>
-         )}
+            {dataStates.length ? (
+              dataStates.map((state) => <StateBox state={state} />)
+            ) : (
+              <p> متاسفانه آگهی مطابق با درخواست شما وجود ندارد </p>
+            )}
           </div>
         </div>
 
@@ -333,14 +414,13 @@ const index = ({states}) => {
 };
 
 export async function getStaticProps() {
- 
-    connectionToDB()
-    const states = await StateModels.find({});
-     
+  connectionToDB();
+  const states = await StateModels.find({});
+
   return {
-    props:{
-      states:JSON.parse(JSON.stringify(states))
-    }
+    props: {
+      states: JSON.parse(JSON.stringify(states)),
+    },
   };
 }
 

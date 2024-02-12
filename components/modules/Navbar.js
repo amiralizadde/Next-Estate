@@ -41,8 +41,12 @@ const Navbar = () => {
             >
               آگهی های ملک
             </Link>
-            <li>درباره ما</li>
-            <li>تماس با ما</li>
+            <Link href='/about'   className={`${
+                router.pathname === "/about" ? "text-yellow-100" : "text-white"
+              }`}>درباره ما</Link>
+            <Link  href='/contact'   className={`${
+                router.pathname === "/contact" ? "text-yellow-100" : "text-white"
+              }`}>تماس با ما</Link>
           </ul>
         </div>
         <div className="flex ">

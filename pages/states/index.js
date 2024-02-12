@@ -92,7 +92,7 @@ const index = ({ states }) => {
 
     setDataStates(filteredData)
   };
-
+  
   return (
     <div className="mt-20 py-12 px-5">
       <div className="lg:grid grid-cols-2">

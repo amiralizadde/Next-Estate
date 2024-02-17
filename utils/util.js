@@ -1,5 +1,5 @@
 import { compare, hash } from "bcryptjs";
-import { sign } from "jsonwebtoken";
+import { sign, verify } from "jsonwebtoken";
 
 const hashPassword = async (password) => {
   const hashedpassword = await hash(password, 12);
@@ -34,8 +34,6 @@ const filterData = (filterData, allData) => {
  
   let TypeStates = []
 
-  console.log('filterData -> ' , filterData );
-
   const filterStatus = filterData.status ? allData.filter(state=>{
     return   state.values.statusAd = filterData.status 
   }) : allData
@@ -54,10 +52,17 @@ const filterData = (filterData, allData) => {
     })
   }) : filterRoom
 
-  console.log('endFilter -> ' ,endFilter);
-
    return endFilter
   
 };
+const verifyToken = (token) => {
+  try {
+    const validationResult = verify(token, process.env.privateKey);
+    return validationResult;
+  } catch (err) {
+    console.log("Verify Token Error =>", err);
+    return false;
+  }
+};
 
-export { hashPassword, generateToken, compirePassword, onError, filterData };
+export { hashPassword, generateToken, compirePassword, onError, filterData ,verifyToken};

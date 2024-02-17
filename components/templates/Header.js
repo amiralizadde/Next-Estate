@@ -27,13 +27,13 @@ const Header = () => {
   let form = useFormik({
     initialValues:{city:"tehran",statusAd:''},
     validate:(values)=>{
-      console.log('valeus -> ' ,values);
+      
       let errors = {}
 
       if (values.statusAd === '') {
         errors.statusAd = 'یک مورد را انتخاب کنید '
       }
-      console.log('errors',errors);
+      
       return errors
     },
     onSubmit:(values)=>{
@@ -116,6 +116,8 @@ const Header = () => {
             </li>
           </ul>
         </div>
+
+
         <div className=" w-4/6 my-16  ">
           <form
             
@@ -137,8 +139,9 @@ const Header = () => {
                 value={cites}
                 onChange={form.handleChange.city}
                 placeholder="همه موقعیت ها"
-                className="h-10  cursor-pointer bg-transparent border text-sm text-white px-8 child:text-black placeholder:ps-2 placeholder:text-white"
+                className="h-10 outline-0 cursor-pointer bg-transparent border text-sm text-white px-8 child:text-black placeholder:ps-2 placeholder:text-white"
                 onClick={() => setIsShowCites(!isShowCites)}
+                autocomplete="off"
               />
               {isShowCites && (
                 <ul
@@ -162,12 +165,15 @@ const Header = () => {
                       setIsShowCites(false);
                     }}
                   >
-                    تهران{" "}
+                    تهران 
                   </li>
                 </ul>
               )}
               {/* </div> */}
             </div>
+
+
+
             <div className=" flex flex-col relative me-2 lg:col-start-3 lg:col-end-5">
               <label
                 htmlFor="status"
@@ -185,8 +191,9 @@ const Header = () => {
                 onChange={form.handleChange.statusAd}
                 onBlur={form.handleBlur}
                 placeholder="انتخاب کنید"
-                className="h-10 cursor-pointer bg-transparent border text-sm text-white px-10 child:text-black placeholder:ps-2 placeholder:text-white"
+                className="h-10 outline-0 cursor-pointer bg-transparent border text-sm text-white px-10 child:text-black placeholder:ps-2 placeholder:text-white"
                 onClick={() => setIsShowStatus(!isShowStatus)}
+                autocomplete="off"
               />
                <span className="text-white text-xs">{form.errors.statusAd && form.touched.statusAd && form.errors.statusAd}</span>
               {isShowStatus && (
@@ -229,7 +236,7 @@ const Header = () => {
               )}
             </div>
             <button type="submit" className="text-xs h-10 tracking-normal bg-yellow-100 text-black hover:bg-transparent transition border border-yellow-100 hover:text-white font-bold">
-              جستجو{" "}
+              جستجو
             </button>
           </form>
         </div>

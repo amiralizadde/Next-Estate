@@ -2,33 +2,67 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Image from "next/image";
+import { Pagination } from 'swiper/modules';
 
-const DailyState = () => {
+const DailyState = ({ dailyStates }) => {
+  // console.log('dailyStates -> ' , dailyStates);
+
   return (
-    <section id="daily-state" className=" bg-yellow-100">
+    <section id="daily-state" className=" bg-yellow-100 py-12">
       <div className="py-10">
-        <p className="text-4xl text-center ">پیشنهادات ویژه هر روز</p>
+        <p className="text-5xl text-center font-shekari tracking-wide font-bold">پیشنهادات ویژه هر روز</p>
       </div>
       <div>
         <Swiper
           spaceBetween={50}
-          slidesPerView={2}
-          loop= 'true'
+          loop={true}
+          pagination={{
+            clickable: true,
+          }}
+          breakpoints={{
+            300:{
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 50,
+            },
+          }}
+          modules={[Pagination]}
           // onSlideChange={() => console.log("slide change")}
           // onSwiper={(swiper) => console.log(swiper)}
         >
-          <SwiperSlide className="border text-center">
-            <div>
-              <Image src='/weekly/weekly1.jpg' width={100} height={100} quality={100} className="w-1/2 mx-auto h-1/2" alt="daily-image"/>
-            </div>
-            <div>
-              <p>کوی صفا خیابان پویان 1</p>
-              <p>125,000,000</p>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide className="border text-center">Slide 2</SwiperSlide>
-          <SwiperSlide className="border text-center">Slide 3</SwiperSlide>
-          <SwiperSlide className="border text-center">Slide 4</SwiperSlide>
+          {dailyStates.map((state) => (
+            <SwiperSlide className=" text-center">
+              <div>
+                <img
+                  src={`./${state.image}`}
+                  width={100}
+                  height={100}
+                  quality={100}
+                  className="w-[270px] mx-auto h-[270px] rounded-full"
+                  alt="daily-image"
+                />
+              </div>
+              <div>
+                <p className="font-bold my-2 ">{state.values.belvar}</p>
+                <p className="text-sm font-bold">
+                  {state.values.statusAd === "rent"
+                    ? Number(state.values.deposit).toLocaleString()
+                    : Number(state.values.price).toLocaleString()}
+                </p>
+              </div>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </section>

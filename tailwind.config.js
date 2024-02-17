@@ -28,6 +28,7 @@ module.exports = {
         Dana: "Dana",
         DanaMedium: "Dana Medium",
         DanaDemiBold: "Dana DemiBold",
+        shekari:"shekari"
       },
       letterSpacing: {
         tightest: "-0.065em",

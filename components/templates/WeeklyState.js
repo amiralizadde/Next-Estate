@@ -6,7 +6,7 @@ const WeeklyState = () => {
   return (
     <div className=" py-28">
       <div>
-        <h1 className="text-center text-3xl tracking-normal font-bold">
+        <h1 className="text-center text-5xl tracking-normal font-bold font-shekari">
           املاک پیشنهادی این هفته{" "}
         </h1>
         <p className="text-center text-gray-400 mt-2">

@@ -41,12 +41,20 @@ const Navbar = () => {
             >
               آگهی های ملک
             </Link>
-            <Link href='/about'   className={`${
+            <Link
+              href="/about"
+              className={`${
                 router.pathname === "/about" ? "text-yellow-100" : "text-white"
-              }`}>درباره ما</Link>
-            <Link  href='/contact'   className={`${
-                router.pathname === "/contact" ? "text-yellow-100" : "text-white"
-              }`}>تماس با ما</Link>
+              }`}
+            >
+              درباره ما
+            </Link>
+            <Link
+              href="/contact"
+              className={`${ router.pathname === "/contact" ? "text-yellow-100": "text-white"}`}
+            >
+              تماس با ما
+            </Link>
           </ul>
         </div>
         <div className="flex ">
@@ -72,22 +80,30 @@ const Navbar = () => {
           <div
             className={`container transition-all overflow-hidden ${styles.showMenu}`}
           >
-            <ul className="child:flex child:items-center child:border-b child:py-[9px] child:relative">
-              <li className="">
-                <p className="text-sm">خانه</p>
-                <ChevronLeftIcon className="w-3 absolute right-1/2" />
+            <ul className=" child:border-b child:py-[9px] child:relative">
+              <li  className={`${ router.pathname === "/" ? "bg-green-100": "bg-white"}`}>
+                <Link href="/" className="flex items-center px-2" >
+                  <p className="text-sm">خانه</p>
+                  <ChevronLeftIcon className="w-3 absolute right-1/2" />
+                </Link>
               </li>
-              <li>
-                <p className="text-sm">آگهی های ملک</p>
-                <ChevronLeftIcon className="w-3 absolute right-1/2" />
+              <li className={`${ router.pathname === "/states" ? "bg-green-100": "bg-white"}`}>
+                <Link href="/states" className="flex items-center px-2">
+                  <p className="text-sm">آگهی های ملک</p>
+                  <ChevronLeftIcon className="w-3 absolute right-1/2" />
+                </Link>
               </li>
-              <li>
-                <p className="text-sm">درباره ما</p>
-                <ChevronLeftIcon className="w-3 absolute right-1/2" />
+              <li className={`${ router.pathname === "/about" ? "bg-green-100": "bg-white"}`}>
+                <Link href="/about" className="flex items-center px-2">
+                  <p className="text-sm">درباره ما</p>
+                  <ChevronLeftIcon className="w-3 absolute right-1/2" />
+                </Link>
               </li>
-              <li>
-                <p className="text-sm">تماس با ما</p>
-                <ChevronLeftIcon className="w-3 absolute right-1/2" />{" "}
+              <li className={`${ router.pathname === "/contact" ? "bg-green-100": "bg-white"}`}>
+                <Link href="/contact" className="flex items-center px-2">
+                  <p className="text-sm">تماس با ما</p>
+                  <ChevronLeftIcon className="w-3 absolute right-1/2" />
+                </Link>
               </li>
             </ul>
           </div>

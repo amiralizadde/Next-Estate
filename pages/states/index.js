@@ -17,6 +17,7 @@ import connectionToDB from "@/utils/db";
 import StateBox from "@/components/modules/StateBox";
 import { useRouter } from "next/router";
 import { filterData } from "@/utils/util";
+import MapState from "@/components/templates/state";
 
 const index = ({ states }) => {
   const [dataStates, setDataStates] = useState(states);
@@ -88,39 +89,44 @@ const index = ({ states }) => {
       typeState,
     };
 
-    const filteredData = filterData(data ,states )
+    const filteredData = filterData(data, states);
 
-    setDataStates(filteredData)
+    setDataStates(filteredData);
   };
-  
+
   return (
     <div className="mt-20 py-12 px-5">
       <div className="lg:grid grid-cols-2">
         {/* Filtered Items 1 */}
         <div>
           <div className="md:grid md:grid-cols-4 items-center ">
-            <div className=" flex flex-col relative me-2  md:col-start-1 md:col-span-1">
-              <label
-                htmlFor="status"
-                className="absolute right-0 -top-5  text-sm"
-              >
-                وضعیت
-              </label>
-              <PencilSquareIcon className="w-6 absolute right-2 top-2 " />
-              <ChevronDownIcon className="w-6 absolute left-2 top-2  " />
-              <input
-                type="text"
-                id="status"
-                defaultValue={status}
-                placeholder="انتخاب کنید"
-                className="h-10 cursor-pointer bg-transparent border text-sm  px-10 child:text-black placeholder:ps-2"
+            <div className=" flex relative flex-col   md:col-start-1 md:col-span-1 ">
+              <div
+                className=" relative me-2 w-full "
                 onClick={() => setIsShowStatus(!isShowStatus)}
-              />
+              >
+                <label
+                  htmlFor="status"
+                  className="absolute right-0 -top-5  text-sm"
+                >
+                  وضعیت
+                </label>
+                <PencilSquareIcon className="w-6 absolute right-2 top-2 cursor-pointer" />
+                <ChevronDownIcon className="w-6 absolute left-2 top-2  cursor-pointer" />
+                <input
+                  type="text"
+                  id="status"
+                  defaultValue={status}
+                  placeholder="انتخاب کنید"
+                  className="h-10 cursor-pointer bg-transparent border w-full text-sm  px-10 child:text-black placeholder:ps-2"
+                  autocomplete="off"
+                />
+              </div>
               {isShowStatus && (
                 <ul
                   type="text"
                   id="city"
-                  className="absolute border border-black z-20 px-5 py-2 right-0 left-0 top-10 child:py-2 child:text-sm child:cursor-pointer bg-white"
+                  className="absolute border border-black z-20 child:ps-2  py-2 right-0 left-0 top-10 child:py-2 child:text-sm child:cursor-pointer bg-white"
                   onBlur={() => setIsShowStatus(false)}
                 >
                   <li
@@ -128,6 +134,7 @@ const index = ({ states }) => {
                       setStatus(e.target.innerHTML);
                       setIsShowStatus(false);
                     }}
+                    className="hover:bg-green-100"
                   >
                     برای اجاره
                   </li>
@@ -136,6 +143,7 @@ const index = ({ states }) => {
                       setStatus(e.target.innerHTML);
                       setIsShowStatus(false);
                     }}
+                    className="hover:bg-green-100"
                   >
                     برای رهن
                   </li>
@@ -144,6 +152,7 @@ const index = ({ states }) => {
                       setStatus(e.target.innerHTML);
                       setIsShowStatus(false);
                     }}
+                    className="hover:bg-green-100"
                   >
                     برای خرید
                   </li>
@@ -262,26 +271,30 @@ const index = ({ states }) => {
           <div className="grid grid-cols-1 md:grid-cols-4 items-center   mt-3 md:py-5">
             {/* تعیین مکان */}
             <div className="mt-12 md:mt-8 flex flex-col md:col-start-1 md:col-span-1 relative me-2 lg:col-start-1 lg:col-span-1">
-              <label
-                htmlFor="city"
-                className="absolute right-0 -top-5  text-sm"
-              >
-                یک مکان را انتخاب کنید
-              </label>
-              <MapPinIcon className="w-6 absolute right-2 top-2 " />
-              <ChevronDownIcon className="w-6 absolute left-2 top-2  " />
-              <input
-                type="text"
-                value={cites}
-                placeholder="همه موقعیت ها"
-                className="h-10  cursor-pointer bg-transparent border text-sm  px-8 child:text-black placeholder:ps-2 "
+              <div
+                className=" relative me-2 w-full "
                 onClick={() => setIsShowCites(!isShowCites)}
-              />
+              >
+                <label
+                  htmlFor="city"
+                  className="absolute right-0 -top-5  text-sm"
+                >
+                  یک مکان را انتخاب کنید
+                </label>
+                <MapPinIcon className="w-6 absolute right-2 top-2 cursor-pointer" />
+                <ChevronDownIcon className="w-6 absolute left-2 top-2  cursor-pointer" />
+                <input
+                  type="text"
+                  value={cites}
+                  placeholder="همه موقعیت ها"
+                  className="h-10 w-full cursor-pointer bg-transparent border text-sm  px-8 child:text-black placeholder:ps-2 "
+                />
+              </div>
               {isShowCites && (
                 <ul
                   type="text"
                   id="city"
-                  className="absolute border border-black z-10 px-5 py-2 right-0 left-0 top-10 child:py-2 child:text-sm child:cursor-pointer bg-white"
+                  className="absolute border border-black z-10  py-2 right-0 left-0 top-10 child:py-2 child:text-sm child:cursor-pointer bg-white"
                   onBlur={() => setIsShowCites(false)}
                 >
                   <li
@@ -289,6 +302,7 @@ const index = ({ states }) => {
                       setCites(e.target.innerHTML);
                       setIsShowCites(false);
                     }}
+                    className="hover:bg-green-100 ps-2"
                   >
                     همه موقعیت ها
                   </li>
@@ -297,6 +311,7 @@ const index = ({ states }) => {
                       setCites(e.target.innerHTML);
                       setIsShowCites(false);
                     }}
+                    className="hover:bg-green-100 ps-2"
                   >
                     تهران
                   </li>
@@ -405,14 +420,16 @@ const index = ({ states }) => {
         </div>
 
         {/* Map */}
-        <div className="hidden lg:block border border-r-2 border-blue-700">
-          Map
+        <div className="hidden lg:block    p-5">
+          <div className="w-full h-screen sticky top-5">
+            <MapState />
+          </div>
         </div>
       </div>
     </div>
   );
 };
-
+ 
 export async function getStaticProps() {
   connectionToDB();
   const states = await StateModels.find({});

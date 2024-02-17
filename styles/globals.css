@@ -22,6 +22,11 @@
         src:  url("../public/fonts/Dana/woff2/DanaFaNum-DemiBold.woff2") , format("woff2");
         font-display:swap;
     }
+    @font-face {
+        font-family: "shekari";
+        src:  url("../public/fonts/A-Shekari/A-Shekari/Shekari.ttf") , format("ttf");
+        font-display:swap;
+    }
 }
 body{
     font-family:"Dana";

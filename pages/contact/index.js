@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import { SlCallEnd } from "react-icons/sl";
 import { TiMessage } from "react-icons/ti";
@@ -25,8 +25,15 @@ const index = () => {
         errors.message = " نامعتبر "
       }
       return errors
+    },
+    onSubmit:(values)=>{
+      alert(' پیام شما به اپراتور تحویل داده شد ...سپاس از نظرتون ')
     }
   });
+
+  useEffect(()=>{
+console.log(form.errors);
+  },[form.errors])
 
   return (
     <div className="mt-16">
@@ -36,7 +43,7 @@ const index = () => {
           <p className="text-xl text-black/50">
             جهت تماس با ما فرم زیر را پر کنید
           </p>
-          <form className="child:w-full py-10 pe-16">
+          <form className="child:w-full py-10 pe-16" onSubmit={form.handleSubmit}>
             <div className="flex flex-col mt-3">
               <label htmlFor="name" className="text-sm">
                 نام(ضروری)
@@ -44,11 +51,11 @@ const index = () => {
               <input
                 id="name"
                 type="text"
-                naeme="name"
+                name="name"
                 value={form.name}
-                onChange={form.handleChange.name}
-                onBlur={form.onBlur}
-                className={`border py-3 ${form.errors.name && form.touched.name && 'border-red-600'}`}
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+                className={`border px-2 py-3 ${(form.errors.name && form.touched.name) ? 'border-red-600' : 'border-black/50'}`}
               />
             </div>
             <div className="flex flex-col mt-3">
@@ -57,11 +64,12 @@ const index = () => {
               </label>
               <input
                 id="email"
-                type="text"
+                type="email"
                 name="email"
                 value={form.email}
-                onChange={form.handleChange.email}
-                className="border py-3 "
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+                className={`border px-2 py-3 ${(form.errors.email && form.touched.email) ? 'border-red-600' : 'border-black/50'}`}
               />
             </div>
             <div className="flex flex-col mt-3">
@@ -73,8 +81,9 @@ const index = () => {
                 type="text"
                 name="title"
                 value={form.title}
-                onChange={form.handleChange.title}
-                className="border py-3 "
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+                className={`border px-2 py-3 ${(form.errors.title && form.touched.title) ? 'border-red-600' : 'border-black/50'}`}
               />
             </div>
             <div className="flex flex-col mt-3">
@@ -87,8 +96,9 @@ const index = () => {
                 rows="5"
                 name="message"
                 value={form.message}
-                onChange={form.handleChange.message}
-                className="border py-3 "
+                onChange={form.handleChange}
+                onBlur={form.handleBlur}
+                className={`border px-2 py-3 ${(form.errors.message && form.touched.message) ? 'border-red-600' : 'border-black/50'}`}
               ></textarea>
             </div>
             <div>

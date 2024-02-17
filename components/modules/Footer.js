@@ -3,7 +3,7 @@ import { ChevronLeftIcon ,MapPinIcon ,PhoneIcon,EnvelopeIcon} from '@heroicons/r
 
 const Footer = () => {
   return (
-    <footer className='p-5 bg-black flex items-center justify-center sm:justify-start'>
+    <footer className='p-5 bg-black flex items-center justify-center sm:justify-start z-50'>
         <div className='py-16  max-w-[420px] flex items-start justify-center flex-col md:max-w-full  md:grid md:grid-cols-3 md:items-start'>
             <div className=''>
                 <p className='text-white font-bold text-xl '><span className='text-yellow-100'>ZU</span><span>HAUS</span></p>

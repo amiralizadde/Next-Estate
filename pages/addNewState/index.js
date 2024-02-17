@@ -2,10 +2,12 @@ import FeatureItems from "@/components/modules/FeatureItems";
 import { featuresItemHome } from "@/db/db";
 import { createAd } from "@/services/axios/requests/states";
 import { useFormik } from "formik";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { MdError } from "react-icons/md";
 
 export default function index({ name }) {
+  let router = useRouter()
   const [features, setFeatures] = useState([]);
   const [imageInput, setImage] = useState(null);
 
@@ -111,6 +113,20 @@ export default function index({ name }) {
       createStateAd(values, img);
     },
   });
+
+  const isLogin =async ()=>{
+    await fetch('/api/auth/me')
+    .then(res=>{
+      if (res.status === 401) {
+        return router.replace('/auth/signin')
+      }
+    })
+    
+  }
+
+  useEffect(()=>{
+    isLogin()
+  },[])
 
   useEffect(() => {
     console.log("errors -> ", form.errors);
@@ -468,9 +484,4 @@ export default function index({ name }) {
   );
 }
 
-export async function getStaticProps(context) {
 
-  return {
-    props: { name: "amir" },
-  };
-}

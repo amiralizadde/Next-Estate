@@ -89,7 +89,7 @@ const signup = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       {/* <HeaderAuth /> */}
-      <div className="my-24 min-h-96 w-[500px] border ">
+      <div className="my-24 min-h-96 w-[300px] sm:w-[500px] border ">
         <NavbarAuth />
 
         <form className="p-10" onSubmit={form.handleSubmit}>

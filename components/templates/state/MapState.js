@@ -3,7 +3,7 @@ import 'leaflet/dist/leaflet.css'
 import { MapContainer , TileLayer } from "react-leaflet";
 
 const MapState = () => {
-  const position = [51.505, -0.09]
+  const position = [35.7219,51.3347]
 
   return (
     <MapContainer className="w-full h-full" center={position} zoom={13} scrollWheelZoom={false}>

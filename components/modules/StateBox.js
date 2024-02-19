@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HomeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Image from "next/image";
 
 const StateBox = ({state}) => {
+
+  // useEffect(()=>{})
+
   return (
     <Link href={`/states/${state._id}`}>
     <div>
       <div className="relative border">
-        <img
+        <Image
           src={`/${state.image}`}
           className="w-full  h-full object-cover"
+          width={1000}
+          height={500}
           alt=""
         />
         <p className="absolute top-3 right-3 bg-black/50 text-white px-2">
-          {state.values.statusAd}
+
+          {state.values.statusAd === 'rent' && 'اجاره'}
+          {state.values.statusAd === 'mortgage' && 'رهن'}
+          {state.values.statusAd === 'sell' && 'فروش'}
+        
         </p>
         <p className="absolute bottom-3 right-3  bg-black/50 text-white md:text-xs p-1 md:bottom-1 md:right-1">
           شناسه 1112

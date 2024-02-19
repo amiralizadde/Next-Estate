@@ -19,8 +19,9 @@ import { useRouter } from "next/router";
 import { filterData } from "@/utils/util";
 import MapState from "@/components/templates/state";
 
-const index = ({ states }) => {
-  const [dataStates, setDataStates] = useState(states);
+const index = (props) => {
+  const {states} = props
+  const [dataStates, setDataStates] = useState([...states]);
   const [typeState, setTypeState] = useState([]);
 
   const [cites, setCites] = useState("");
@@ -82,13 +83,13 @@ const index = ({ states }) => {
   }, [dataStates]);
 
   const filterdata = () => {
+
     const data = {
       status,
       priceRange,
       room,
       typeState,
     };
-
     const filteredData = filterData(data, states);
 
     setDataStates(filteredData);
@@ -154,7 +155,7 @@ const index = ({ states }) => {
                     }}
                     className="hover:bg-green-100"
                   >
-                    برای خرید
+                    برای فروش
                   </li>
                 </ul>
               )}
@@ -425,6 +426,7 @@ const index = ({ states }) => {
             <MapState />
           </div>
         </div>
+
       </div>
     </div>
   );

@@ -59,8 +59,8 @@ const Header = () => {
             <li className="cursor-pointer lg:border-none">
               <Image
                 src="/homeSVG/home1.png"
-                width={100}
-                height={100}
+                width={1000}
+                height={500}
                 className="object-cover w-12 transition hover:-translate-y-1"
               />
               <span className="text-white mt-[10px]">آپارتمان</span>
@@ -68,8 +68,8 @@ const Header = () => {
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home1.png"
-                width={100}
-                height={100}
+                width={1000}
+                height={500}
                 className="object-cover w-12 transition hover:-translate-y-2 "
               />
               <span className="text-white mt-[10px]">خانه حیاط دار</span>
@@ -78,8 +78,8 @@ const Header = () => {
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home2.png"
-                width={100}
-                height={100}
+                width={1000}
+                height={500}
                 className="object-cover w-12 transition hover:-translate-y-2 "
               />
               <span className="text-white mt-[10px]">زمین و ملک </span>
@@ -88,8 +88,8 @@ const Header = () => {
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home3.png"
-                width={100}
-                height={100}
+                width={1000}
+                height={500}
                 className="object-cover w-12 transition hover:-translate-y-2 "
               />
               <span className="text-white mt-[10px]">مغازه</span>
@@ -98,8 +98,8 @@ const Header = () => {
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home4.png"
-                width={100}
-                height={100}
+                width={1000}
+                height={500}
                 className="object-cover w-12 transition hover:-translate-y-2 "
               />
               <span className="text-white mt-[10px]">واحد اداری</span>
@@ -108,8 +108,8 @@ const Header = () => {
             <li className="cursor-pointer">
               <Image
                 src="/homeSVG/home6.png"
-                width={100}
-                height={100}
+                width={1000}
+                height={500}
                 className="object-cover w-12 transition hover:-translate-y-2"
               />
               <span className="text-white mt-[10px]">ویلایی</span>

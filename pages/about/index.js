@@ -2,6 +2,7 @@ import React from "react";
 import { IoLogoInstagram } from "react-icons/io";
 import { FaTelegram } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
+import Image from "next/image";
 
 const index = () => {
   return (
@@ -9,9 +10,11 @@ const index = () => {
       <header>
         <div className="relative">
           <div>
-            <img
+            <Image
               src="/about/title-img-1.jpg"
-              alt=""
+              alt="header about"
+              width={1000}
+              height={500}
               className="h-full w-full object-cover"
             />
           </div>
@@ -25,9 +28,11 @@ const index = () => {
       <main>
         <div className="grid grid-cols-1 xl:grid-cols-2  py-16 px-10 gap-10 child:p-10">
           <div>
-            <img
+            <Image
               src="/about/about-img-1-1.jpg"
               alt=""
+              width={1000}
+              height={500}
               className="w-full h-full object-cover"
             />
           </div>
@@ -68,9 +73,11 @@ const index = () => {
             </div>
           </div>
           <div>
-            <img
+            <Image
               src="/about/about-img-2-1.jpg"
               alt=""
+              width={1000}
+              height={500}
               className="w-full h-full object-cover"
             />
           </div>
@@ -84,7 +91,7 @@ const index = () => {
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-y-5 child:flex child:items-center child:justify-center child:flex-col">
               <div className="">
-                <img src="/about/team-img-1-1.png" alt="" />
+                <Image src="/about/team-img-1-1.png"  width={1000} height={500} quality={100} className="w-[200px] h-[200px] object-cover" alt="" />
                 <p className="mt-2 font-bold text-base"> امیر علی زاده </p>
                 <p className="my-3 text-sm"> مدیر دفتر </p>
                 <div className="flex child:text-black/50">
@@ -94,7 +101,7 @@ const index = () => {
                 </div>
               </div>
               <div>
-                <img src="/about/team-img-3-1.png" alt="" />
+                <Image src="/about/team-img-3-1.png"  width={1000} height={500} quality={100} className="w-[200px] h-[200px] object-cover" alt="" />
                 <p className="mt-2 font-bold text-base"> مینا کریمی </p>
                 <p className="my-3 text-sm"> مدیر فروش </p>
                 <div className="flex child:text-black/50">
@@ -104,7 +111,7 @@ const index = () => {
                 </div>
               </div>
               <div>
-                <img src="/about/team-img-4-1.png" alt="" />
+                <Image src="/about/team-img-4-1.png"  width={1000} height={500} quality={100} className="w-[200px] h-[200px] object-cover" alt="" />
                 <p className="mt-2 font-bold text-base">  هادی علیلو </p>
                 <p className="my-3 text-sm"> مدیر عامل </p>
                 <div className="flex child:text-black/50">
@@ -113,8 +120,8 @@ const index = () => {
                   <CiLinkedin />
                 </div>
               </div>
-              <div>
-                <img src="/about/team-img-5-1.png" alt="" />
+              <div> 
+                <Image src="/about/team-img-5-1.png"  width={1000} height={500} quality={100} className="w-[200px] h-[200px] object-cover" alt="" />
                 <p className="mt-2 font-bold text-base">  مریم صالحی  </p>
                 <p className="my-3 text-sm"> اپراتور  </p>
                 <div className="flex child:text-black/50">

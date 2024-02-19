@@ -28,7 +28,6 @@ import StateModels from "@/models/states";
 
 const DetailsHome = ({ dataStates }) => {
   const { values } = dataStates;
-  console.log("values -> ", values);
   return (
     <div className="mt-16 ">
       {/* images home */}
@@ -98,7 +97,10 @@ const DetailsHome = ({ dataStates }) => {
             </div>
             <div className="md:me-5 ">
               <p className="text-sm bg-blue-400 w-16 text-center rounded text-white py-1">
-                {values.statusAd}
+              {values.statusAd === 'rent' && 'اجاره'}
+              {values.statusAd === 'mortgage' && 'رهن'}
+              {values.statusAd === 'sell' && 'فروش'}
+        
               </p>
               <p className="flex flex-col xs:flex-row mt-4">
                 <span className="text-sm"> شناسه ملک : </span>

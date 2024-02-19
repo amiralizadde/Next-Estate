@@ -33,10 +33,24 @@ const onError = (err, req, res, next) => {
 const filterData = (filterData, allData) => {
  
   let TypeStates = []
-
+  console.log('filterData -> ' ,filterData);
+  console.log('allData -> ' ,allData);
   const filterStatus = filterData.status ? allData.filter(state=>{
-    return   state.values.statusAd = filterData.status 
+    // return   state.values.statusAd === filterData.status 
+
+     if (filterData.status ==='برای اجاره' ) {
+      return state.values.statusAd === 'rent'
+     }
+     else if(filterData.status ==='برای رهن'){
+      return state.values.statusAd === 'mortgage'
+     }
+     else if(filterData.status ==='برای فروش'){
+      return state.values.statusAd === 'sell'
+    }
+    
   }) : allData
+
+  console.log('filterStatus -> ' ,filterStatus);
 
   const filterPrice = filterStatus.filter(state=>{
     return  (state.values.price || state.values.deposit) >= filterData.priceRange[0] &&(state.values.price || state.values.deposit) <= filterData.priceRange[1]

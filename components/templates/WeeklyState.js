@@ -18,11 +18,11 @@ const WeeklyState = () => {
         className={`px-16 transition grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 child:cursor-pointer child:transition  lg:max-h-screen grid-rows-weekly9 md:grid-rows-weekly4 lg:grid-rows-2 lg:px-48 lg:py-10  gap-2 ${styles.weeklyState}`}
       >
         <div className="relative row-start-1 row-end-2 md:col-start-1 md:col-end-3   md:row-start-1 md:row-end-2   lg:col-start-3 lg:col-end-5   lg:row-start-1 lg:row-end-2">
-          <img
+          <Image
             src="/weekly/weekly1.jpg"
             className="h-full object-cover w-full "
-            width={100}
-            height={100}
+            width={1000}
+            height={500}
           />
 
           <p className="absolute top-3 right-2 p-1 rounded text-white text-sm font-bold z-20 bg-black/50">
@@ -40,11 +40,11 @@ const WeeklyState = () => {
         </div>
 
         <div className="relative row-start-2 row-end-4 md:col-start-2 md:col-end-3   md:row-start-2 md:row-end-3   lg:col-start-2 lg:col-end-3   lg:row-start-1 lg:row-end-2">
-          <img
+          <Image
             src="/weekly/weekly2.jpg"
             className="h-full object-cover  w-full "
-            width={100}
-            height={100}
+            width={1000}
+            height={500}
           />
           <p className="absolute top-3 right-2 p-1 rounded text-white text-sm font-bold z-20 bg-black/50">
             برای رهن
@@ -60,11 +60,11 @@ const WeeklyState = () => {
           </p>
         </div>
         <div className="relative row-start-4 row-end-6 md:col-start-1 md:col-end-2   md:row-start-2 md:row-end-4   lg:col-start-1 lg:col-end-2   lg:row-start-1 lg:row-end-3">
-          <img
+          <Image
             src="/weekly/weekly3.jpg"
             className="h-full object-cover    w-full "
-            width={100}
-            height={100}
+            width={1000}
+            height={500}
           />
           <p className="absolute top-3 right-2 p-1 rounded text-white text-sm font-bold z-20 bg-black/50">
             برای رهن
@@ -80,11 +80,11 @@ const WeeklyState = () => {
           </p>
         </div>
         <div className="relative row-start-6 row-end-8 md:col-start-2 md:col-end-3   md:row-start-3 md:row-end-4   lg:col-start-4 lg:col-end-5   lg:row-start-2 lg:row-end-3">
-          <img
+          <Image
             src="/weekly/weekly4.jpg"
             className="h-full object-cover    w-full "
-            width={100}
-            height={100}
+            width={1000}
+            height={500}
           />
           <p className="absolute top-3 right-2 p-1 rounded text-white text-sm font-bold z-20 bg-black/50">
             برای رهن
@@ -100,11 +100,11 @@ const WeeklyState = () => {
           </p>
         </div>
         <div className="relative row-start-8 row-end-9 md:col-start-1 md:col-end-3   md:row-start-4 md:row-end-5   lg:col-start-2 lg:col-end-4   lg:row-start-2 lg:row-end-3">
-          <img
+          <Image
             src="/weekly/weekly5.jpg"
             className="h-full object-cover  w-full "
-            width={100}
-            height={100}
+            width={1000}
+            height={500}
           />
           <p className="absolute top-3 right-2 p-1 rounded text-white text-sm font-bold z-20 bg-black/50">
             برای رهن

@@ -11,11 +11,11 @@ const Cites = () => {
         </div>
         <ul className="grid grid-cols-1 xs:grid-cols-2 xs:child:h-[300px] xs:child:w-[200px]  sm:child:h-[350px] sm:child:w-[250px] md:grid-cols-3 md:child:h-[300px] md:child:w-[200px]  lg:grid-cols-5 lg:child:h-[280px] lg:child:w-[200px] lg:px-16 xl:px-40 sm:px-10 child:h-[80vh] child:mx-5 child:mt-3 child:relative">
           <li className="relative flex flex-col items-center justify-center border">
-            <img
+            <Image
               src="/cites/ardabil.jpg"
               className="object-cover w-full h-full"
-              width={100}
-              height={100}
+              width={1000}
+              height={500}
               quality={100}
               alt="اردبیل"
             />
@@ -30,8 +30,8 @@ const Cites = () => {
             <Image
               src="/cites/ilam.jpg"
               className="object-cover w-full h-full"
-              width={100}
-              height={100}
+              width={1000}
+              height={500}
               quality={100}
               alt="ایلام"
             />
@@ -46,8 +46,8 @@ const Cites = () => {
             <Image
               src="/cites/ormye.jpg"
               className="object-cover w-full h-full"
-              width={100}
-              height={100}
+              width={1000}
+              height={500}
               quality={100}
               alt="ارومیه"
             />
@@ -62,8 +62,8 @@ const Cites = () => {
             <Image
               src="/cites/tabriz.jpg"
               className="object-cover w-full h-full"
-              width={100}
-              height={100}
+              width={1000}
+              height={500}
               quality={100}
               alt="تبریز"
             />
@@ -78,8 +78,8 @@ const Cites = () => {
             <Image
               src="/cites/tehran.jpg"
               className="object-cover w-full h-full"
-              width={100}
-              height={100}
+              width={1000}
+              height={500}
               quality={100}
               alt="تهران"
             />

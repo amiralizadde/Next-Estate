@@ -44,10 +44,10 @@ const DailyState = ({ dailyStates }) => {
           {dailyStates.map((state) => (
             <SwiperSlide className=" text-center">
               <div>
-                <img
-                  src={`./${state.image}`}
-                  width={100}
-                  height={100}
+                <Image
+                  src={`/${state.image}`}
+                  width={1000}
+                  height={500}
                   quality={100}
                   className="w-[270px] mx-auto h-[270px] rounded-full"
                   alt="daily-image"

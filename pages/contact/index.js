@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import { SlCallEnd } from "react-icons/sl";
 import { TiMessage } from "react-icons/ti";
@@ -6,8 +6,9 @@ import { IoLogoInstagram } from "react-icons/io";
 import { FaTelegram } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 import { useFormik } from "formik";
+import Head from "next/head";
 
-const index = () => {
+const Index = () => {
   let form = useFormik({
     initialValues: { name: "", email: "", title: "", message: "" },
     validate:(values)=>{
@@ -31,11 +32,12 @@ const index = () => {
     }
   });
 
-  useEffect(()=>{
-console.log(form.errors);
-  },[form.errors])
 
   return (
+    <>
+    <Head>
+    <title> تماس با ما </title>
+    </Head>
     <div className="mt-16">
       <div className="grid grid-cols-1 md:grid-cols-2 p-16">
         <div>
@@ -149,7 +151,9 @@ console.log(form.errors);
         </div>
       </div>
     </div>
+    </>
+
   );
 };
 
-export default index;
+export default Index;

@@ -1,12 +1,13 @@
 import FeatureItems from "@/components/modules/FeatureItems";
 import { featuresItemHome } from "@/db/db";
 import { createAd } from "@/services/axios/requests/states";
-import { useFormik } from "formik";
+import {useFormik } from "formik";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { MdError } from "react-icons/md";
 
-export default function index({ name }) {
+export default function Index({ name }) {
   let router = useRouter()
   const [features, setFeatures] = useState([]);
   const [imageInput, setImage] = useState(null);
@@ -30,7 +31,7 @@ export default function index({ name }) {
       room: "",
       floor: "",
       allFloor: "",
-      imageState: File,
+      imageState: '',
       BuildingCharge: "",
     },
 
@@ -124,13 +125,10 @@ export default function index({ name }) {
     
   }
 
-  useEffect(()=>{
+ useEffect(()=>{
     isLogin()
   },[])
 
-  useEffect(() => {
-    console.log("errors -> ", form.errors);
-  }, [form.errors]);
 
   const addFeatures = (checked, feature) => {
     checked
@@ -148,7 +146,6 @@ export default function index({ name }) {
       features,
     };
 
-    console.log("data ->", data);
     const newform = new FormData();
     newform.append("data", JSON.stringify(data));
     newform.append("file", img);
@@ -178,6 +175,10 @@ export default function index({ name }) {
   };
 
   return (
+    <>
+    <Head>
+      <title> فرم آگهی </title>
+    </Head>
     <div className="min-h-screen mt-14 px-10 py-16 ">
       <form className="  p-5  bg-yellow-100 " onSubmit={form.handleSubmit}>
         <div className="grid gap-2  items-center xs:grid-cols-2 lg:grid-cols-2  child:w-full child:text-xs md:child:text-sm child:placeholder:text-black  child:font-bold child:rounded">
@@ -481,6 +482,8 @@ export default function index({ name }) {
         </div>
       </form>
     </div>
+    </>
+
   );
 }
 

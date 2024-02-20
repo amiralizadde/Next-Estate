@@ -3,9 +3,14 @@ import { IoLogoInstagram } from "react-icons/io";
 import { FaTelegram } from "react-icons/fa";
 import { CiLinkedin } from "react-icons/ci";
 import Image from "next/image";
+import Head from "next/head";
 
-const index = () => {
+const Index = () => {
   return (
+    <>
+    <Head>
+      <title> درباره ما </title>
+    </Head>
     <div className="mt-14">
       <header>
         <div className="relative">
@@ -135,7 +140,9 @@ const index = () => {
         </section>
       </main>
     </div>
+    </>
+
   );
 };
 
-export default index;
+export default Index;

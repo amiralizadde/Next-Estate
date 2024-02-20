@@ -1,12 +1,13 @@
 import NavbarAuth from "@/components/modules/NavbarAuth";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { createUser } from "@/services/axios/requests/UserAuth";
 import swal from "sweetalert";
 import { useRouter } from "next/router";
 import { useFormik } from "formik";
+import Head from "next/head";
 
-const signup = () => {
+const Index = () => {
   let router = useRouter();
 
   let form = useFormik({
@@ -87,6 +88,10 @@ const signup = () => {
   };
 
   return (
+    <>
+    <Head>
+      <title> ثبت نام </title>
+    </Head>
     <div className="flex flex-col items-center justify-center">
       {/* <HeaderAuth /> */}
       <div className="my-24 min-h-96 w-[300px] sm:w-[500px] border ">
@@ -200,7 +205,9 @@ const signup = () => {
         </div>
       </div>
     </div>
+    </>
+
   );
 };
 
-export default signup;
+export default Index;

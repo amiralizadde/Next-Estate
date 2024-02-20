@@ -25,17 +25,26 @@ import { MapPinIcon } from "@heroicons/react/24/solid";
 import { BsSignpost2 } from "react-icons/bs";
 import connectionToDB from "@/utils/db";
 import StateModels from "@/models/states";
+import Image from "next/image";
+import Head from "next/head";
 
 const DetailsHome = ({ dataStates }) => {
-  const { values } = dataStates;
+  console.log('dataStates ->',dataStates);
+  const  values  = dataStates?.values;
   return (
+    <>
+    <Head>
+      <title> آگهی </title>
+    </Head>
     <div className="mt-16 ">
       {/* images home */}
       <header className="">
         <div className="">
-          <img
-            src={`/${dataStates.image}`}
-            alt=""
+          <Image
+            src={`/${dataStates?.image}`}
+            width={1000}
+            height={500}
+            alt="state image"
             className="w-full h-[80vh] object-contain "
           />
         </div>
@@ -329,7 +338,7 @@ const DetailsHome = ({ dataStates }) => {
               <ul className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3">
 
                 {dataStates.features.map(feature=>(
-                  <li className="flex items-center my-2">
+                  <li key={feature.id} className="flex items-center my-2">
                    <CheckIcon className="text-base text-black/50 w-5 border border-black rounded-full me-1" />
                    <span className="me-4 ms-1 text-base text-black/50">
                     {feature.featureItem}
@@ -376,34 +385,46 @@ const DetailsHome = ({ dataStates }) => {
         </div>
       </section>
     </div>
+    </>
+    
   );
 };
 
-export async function getStaticPaths(context) {
-  connectionToDB();
-  const states = await StateModels.find({});
+// export async function getStaticPaths(context) {
+//   connectionToDB();
+//   const states = await StateModels.find({});
 
-  const paths = states.map((state) => {
-    return {
-      params: { id: String(state._id) },
-    };
-  });
+//   const paths = states.map((state) => {
+//     return {
+//       params: { id: String(state._id) },
+//     };
+//   });
 
-  return {
-    paths,
-    fallback: true,
-  };
-}
+//   return {
+//     paths,
+//     fallback: true,
+//   };
+// }
 
-export async function getStaticProps(context) {
+// export async function getStaticProps(context) {
+//   connectionToDB();
+//   const states = await StateModels.findOne({ _id: context.params.id });
+
+//   return {
+//     props: {
+//       dataStates: JSON.parse(JSON.stringify(states)),
+//     },
+//   };
+// }
+
+export async function getServerSideProps(context){
   connectionToDB();
   const states = await StateModels.findOne({ _id: context.params.id });
-
   return {
-    props: {
-      dataStates: JSON.parse(JSON.stringify(states)),
-    },
-  };
+        props: {
+          dataStates: JSON.parse(JSON.stringify(states)),
+        },
+      };
 }
 
 export default DetailsHome;

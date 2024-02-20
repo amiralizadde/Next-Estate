@@ -50,7 +50,7 @@ const filterData = (filterData, allData) => {
     
   }) : allData
 
-  console.log('filterStatus -> ' ,filterStatus);
+
 
   const filterPrice = filterStatus.filter(state=>{
     return  (state.values.price || state.values.deposit) >= filterData.priceRange[0] &&(state.values.price || state.values.deposit) <= filterData.priceRange[1]

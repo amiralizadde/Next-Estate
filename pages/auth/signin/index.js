@@ -6,8 +6,9 @@ import { useFormik } from "formik";
 import { loginUser } from "@/services/axios/requests/UserAuth";
 import swal from "sweetalert";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
-const index = () => {
+const Index = () => {
   let router = useRouter()
   let form = useFormik({
     initialValues: { identifire: "", password: "" },
@@ -58,6 +59,10 @@ const index = () => {
   }
 
   return (
+    <>
+    <Head>
+      <title> صفحه ورود </title>
+    </Head>
     <div className="flex flex-col items-center justify-center">
       {/* <HeaderAuth /> */}
       <div className="my-24 min-h-96 w-[300px] sm:w-[500px] border ">
@@ -126,6 +131,8 @@ const index = () => {
         </div>
       </div>
     </div>
+    </>
+
   );
 };
 
@@ -138,4 +145,4 @@ export async function getStaticProps (context) {
   }
 }
 
-export default index;
+export default Index;

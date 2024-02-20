@@ -18,8 +18,9 @@ import StateBox from "@/components/modules/StateBox";
 import { useRouter } from "next/router";
 import { filterData } from "@/utils/util";
 import MapState from "@/components/templates/state";
+import Head from "next/head";
 
-const index = (props) => {
+const Index = (props) => {
   const {states} = props
   const [dataStates, setDataStates] = useState([...states]);
   const [typeState, setTypeState] = useState([]);
@@ -78,10 +79,6 @@ const index = (props) => {
         });
   };
 
-  useEffect(() => {
-    console.log("dataStates -> ", dataStates);
-  }, [dataStates]);
-
   const filterdata = () => {
 
     const data = {
@@ -96,6 +93,11 @@ const index = (props) => {
   };
 
   return (
+    <>
+    <Head>
+    <title> لیست آگهی ها </title>
+    </Head>
+    
     <div className="mt-20 py-12 px-5">
       <div className="lg:grid grid-cols-2">
         {/* Filtered Items 1 */}
@@ -394,7 +396,7 @@ const index = (props) => {
             <div className="lg:col-start-2 lg:col-span-3">
               <div className=" grid  grid-cols-2 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 ps-5">
                 {featuresItemHome.map((feature) => (
-                  <FeatureItems feature={feature} addFeatures={addFeatures} />
+                  <FeatureItems key={feature.id} feature={feature} addFeatures={addFeatures} />
                 ))}
               </div>
             </div>
@@ -413,7 +415,7 @@ const index = (props) => {
           {/* show Homes Items */}
           <div className="child:my-3 grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 p-5">
             {dataStates.length ? (
-              dataStates.map((state) => <StateBox state={state} />)
+              dataStates.map((state) => <StateBox key={state._id} state={state} />)
             ) : (
               <p> متاسفانه آگهی مطابق با درخواست شما وجود ندارد </p>
             )}
@@ -429,6 +431,8 @@ const index = (props) => {
 
       </div>
     </div>
+    </>
+
   );
 };
  
@@ -443,4 +447,4 @@ export async function getStaticProps() {
   };
 }
 
-export default index;
+export default Index;

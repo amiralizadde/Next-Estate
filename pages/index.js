@@ -5,10 +5,14 @@ import DailyState from "@/components/templates/DailyState";
 import Header from "@/components/templates/Header";
 import connectionToDB from "@/utils/db";
 import StateModels from "@/models/states";
+import Head from "next/head";
 
 const index = ({dailyStates}) => {
   return (
     <>
+    <Head>
+    <title> صفحه اصلی </title>
+    </Head>
       <Header />
       <WeeklyState />
       <ExplainSite />

@@ -42,7 +42,7 @@ const DailyState = ({ dailyStates }) => {
           // onSwiper={(swiper) => console.log(swiper)}
         >
           {dailyStates.map((state) => (
-            <SwiperSlide className=" text-center">
+            <SwiperSlide key={state._id} className=" text-center">
               <div>
                 <Image
                   src={`/${state.image}`}

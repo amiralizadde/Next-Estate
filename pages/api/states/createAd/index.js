@@ -1,6 +1,6 @@
 import StateModels from "@/models/states";
 import connectionToDB from "@/utils/db";
-import onError from "@/utils/util";
+import {onError} from "@/utils/util";
 import multer from "multer";
 import nc from "next-connect";
 import path from "path";

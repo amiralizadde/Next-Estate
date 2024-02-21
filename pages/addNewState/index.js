@@ -31,7 +31,7 @@ export default function Index({ name }) {
       room: "",
       floor: "",
       allFloor: "",
-      imageState: '',
+      imageState: File,
       BuildingCharge: "",
     },
 

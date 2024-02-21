@@ -8,7 +8,7 @@ import swal from "sweetalert";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-const Index = () => {
+const index = () => {
   let router = useRouter()
   let form = useFormik({
     initialValues: { identifire: "", password: "" },
@@ -145,4 +145,4 @@ export async function getStaticProps (context) {
   }
 }
 
-export default Index;
+export default index;
